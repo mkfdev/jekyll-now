@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="git," />
 
 
 
@@ -86,13 +86,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="FRONT.DEV.MK">
-<meta property="og:url" content="http://mkfdev.github.io/tags/hello/index.html">
+<meta name="description" content="로컬PC 작업 파일을 원격 저장소로 올리려면1)add 2)commit 3)push 명령을 사용해야 한다.  1) 작업공간(local directory)에서 add 명령어를 통해 stage에 반영한다.2) commit 명령어를 통해 저장소에 반영한다.stage에 올렸던 데이터를 확정하는 단계이다.여기까지는 중간 단계로 원격 저장소에 파일이 반영되지 않고,내">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GIT 기초 정리">
+<meta property="og:url" content="http://mkfdev.github.io/2017/09/17/TIL_0917/index.html">
 <meta property="og:site_name" content="FRONT.DEV.MK">
+<meta property="og:description" content="로컬PC 작업 파일을 원격 저장소로 올리려면1)add 2)commit 3)push 명령을 사용해야 한다.  1) 작업공간(local directory)에서 add 명령어를 통해 stage에 반영한다.2) commit 명령어를 통해 저장소에 반영한다.stage에 올렸던 데이터를 확정하는 단계이다.여기까지는 중간 단계로 원격 저장소에 파일이 반영되지 않고,내">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://mkfdev.github.io/2017/09/17/images/git1.jpg">
+<meta property="og:updated_time" content="2017-12-07T17:44:13.586Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FRONT.DEV.MK">
+<meta name="twitter:title" content="GIT 기초 정리">
+<meta name="twitter:description" content="로컬PC 작업 파일을 원격 저장소로 올리려면1)add 2)commit 3)push 명령을 사용해야 한다.  1) 작업공간(local directory)에서 add 명령어를 통해 stage에 반영한다.2) commit 명령어를 통해 저장소에 반영한다.stage에 올렸던 데이터를 확정하는 단계이다.여기까지는 중간 단계로 원격 저장소에 파일이 반영되지 않고,내">
+<meta name="twitter:image" content="http://mkfdev.github.io/2017/09/17/images/git1.jpg">
 
 
 
@@ -122,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://mkfdev.github.io/tags/hello/"/>
+  <link rel="canonical" href="http://mkfdev.github.io/2017/09/17/TIL_0917/"/>
 
 
 
 
 
-  <title>Tag: hello | FRONT.DEV.MK</title>
+  <title>GIT 기초 정리 | FRONT.DEV.MK</title>
   
 
 
@@ -147,7 +154,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -265,54 +272,169 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>hello<small>Tag</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mkfdev.github.io/2017/09/17/TIL_0917/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Min Kyung">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FRONT.DEV.MK">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/12/07/test01/" itemprop="url">
-              
-                <span itemprop="name">test01</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">GIT 기초 정리</h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-07T03:19:46+09:00"
-              content="2017-12-07" >
-          12-07
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-17T18:19:46+09:00">
+                2017-09-17
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/TIL/" itemprop="url" rel="index">
+                    <span itemprop="name">TIL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/09/17/TIL_0917/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/17/TIL_0917/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>로컬PC 작업 파일을 원격 저장소로 올리려면<br>1)add 2)commit 3)push 명령을 사용해야 한다.</p>
+<p><img src="../images/git1.jpg" alt="git process"></p>
+<p>1) 작업공간(local directory)에서 add 명령어를 통해 stage에 반영한다.<br>2) commit 명령어를 통해 저장소에 반영한다.stage에 올렸던 데이터를 확정하는 단계이다.<br>여기까지는 중간 단계로 원격 저장소에 파일이 반영되지 않고,<br>내 PC에 있는 Git 로컬 저장소에만 존재한다.<br>3) push 명령어를 통해 원격 저장소에 반영한다.<br>git clone을 통해 원격 저장소의 파일을 읽어와서 작업했을 때,<br>$git push origin “push할 브랜치 이름”<br>ex) $git push origin master<br>원격 저장소를 정의해야 할 때,<br>$git remote add “원격저장소명 원격저장소주소”<br>ex) $git remote add origin <a href="http://github.com/" target="_blank" rel="noopener">http://github.com/</a>…</p>
+<h3 id="Repository-생성방법-1"><a href="#Repository-생성방법-1" class="headerlink" title="Repository 생성방법(1)"></a>Repository 생성방법(1)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$mkdir 디렉토리명</span><br><span class="line">$git init</span><br><span class="line">$git remote add origin 원격저장소주소</span><br></pre></td></tr></table></figure>
+<h3 id="Repository-생성방법-2"><a href="#Repository-생성방법-2" class="headerlink" title="Repository 생성방법(2)"></a>Repository 생성방법(2)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">github.com 웹에서 repository 생성</span><br><span class="line">$git add 파일명</span><br><span class="line">$git commit -m &quot;메세지&quot;</span><br><span class="line">$git remote add origin 원격저장소주소</span><br><span class="line">$git push origin master</span><br></pre></td></tr></table></figure>
+<h3 id="갱신"><a href="#갱신" class="headerlink" title="갱신"></a>갱신</h3><pre><code>$git pull
+</code></pre><p>원격 저장소의 변경내용이 로컬 작업 디렉토리에 받아지고(fetch) 병합(merge)된다.</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -320,6 +442,17 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2017/09/17/TIL_0917/"
+           data-title="GIT 기초 정리" data-url="http://mkfdev.github.io/2017/09/17/TIL_0917/">
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -340,8 +473,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -356,12 +498,21 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
             
 
             
@@ -402,6 +553,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Repository-생성방법-1"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Repository-&#xC0DD;&#xC131;&#xBC29;&#xBC95;-1" class="headerlink" title="Repository &#xC0DD;&#xC131;&#xBC29;&#xBC95;(1)"></a>Repository &#xC0DD;&#xC131;&#xBC29;&#xBC95;(1)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Repository-생성방법-2"><span class="nav-number">2.</span> <span class="nav-text"><a href="#Repository-&#xC0DD;&#xC131;&#xBC29;&#xBC95;-2" class="headerlink" title="Repository &#xC0DD;&#xC131;&#xBC29;&#xBC95;(2)"></a>Repository &#xC0DD;&#xC131;&#xBC29;&#xBC95;(2)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#갱신"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#xAC31;&#xC2E0;" class="headerlink" title="&#xAC31;&#xC2E0;"></a>&#xAC31;&#xC2E0;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -535,6 +702,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 

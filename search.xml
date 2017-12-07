@@ -1,39 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-    
-    <entry>
-      <title><![CDATA[test01]]></title>
-      <url>/2017/12/07/test01/</url>
-      <content type="html"><![CDATA[<p>first test page!<br>hello</p>
-]]></content>
-      
-        
-        <tags>
-            
-            <tag> hello </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Hello World]]></title>
-      <url>/2017/12/07/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-]]></content>
-      
-        
-    </entry>
-    
-  
-  
+<search>
+  <entry>
+    <title><![CDATA[GIT 기초 정리]]></title>
+    <url>%2F2017%2F09%2F17%2FTIL_0917%2F</url>
+    <content type="text"><![CDATA[로컬PC 작업 파일을 원격 저장소로 올리려면1)add 2)commit 3)push 명령을 사용해야 한다. 1) 작업공간(local directory)에서 add 명령어를 통해 stage에 반영한다.2) commit 명령어를 통해 저장소에 반영한다.stage에 올렸던 데이터를 확정하는 단계이다.여기까지는 중간 단계로 원격 저장소에 파일이 반영되지 않고,내 PC에 있는 Git 로컬 저장소에만 존재한다.3) push 명령어를 통해 원격 저장소에 반영한다.git clone을 통해 원격 저장소의 파일을 읽어와서 작업했을 때,$git push origin “push할 브랜치 이름”ex) $git push origin master원격 저장소를 정의해야 할 때,$git remote add “원격저장소명 원격저장소주소”ex) $git remote add origin http://github.com/… Repository 생성방법(1)123$mkdir 디렉토리명$git init$git remote add origin 원격저장소주소 Repository 생성방법(2)12345github.com 웹에서 repository 생성$git add 파일명$git commit -m &quot;메세지&quot;$git remote add origin 원격저장소주소$git push origin master 갱신$git pull 원격 저장소의 변경내용이 로컬 작업 디렉토리에 받아지고(fetch) 병합(merge)된다.]]></content>
+      <categories>
+        <category>TIL</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
 </search>
