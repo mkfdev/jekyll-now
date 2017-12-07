@@ -86,19 +86,19 @@
 
 
 
-<meta name="description" content="로컬PC 작업 파일을 원격 저장소로 올리려면1)add 2)commit 3)push 명령을 사용해야 한다.  1) 작업공간(local directory)에서 add 명령어를 통해 stage에 반영한다.2) commit 명령어를 통해 저장소에 반영한다.stage에 올렸던 데이터를 확정하는 단계이다.여기까지는 중간 단계로 원격 저장소에 파일이 반영되지 않고,내">
+<meta name="description" content="로컬PC 작업 파일을 원격 저장소로 올리려면1)add 2)commit 3)push 명령을 사용해야 한다.">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GIT 기초 정리">
 <meta property="og:url" content="http://mkfdev.github.io/2017/09/17/TIL_0917/index.html">
 <meta property="og:site_name" content="FRONT.DEV.MK">
-<meta property="og:description" content="로컬PC 작업 파일을 원격 저장소로 올리려면1)add 2)commit 3)push 명령을 사용해야 한다.  1) 작업공간(local directory)에서 add 명령어를 통해 stage에 반영한다.2) commit 명령어를 통해 저장소에 반영한다.stage에 올렸던 데이터를 확정하는 단계이다.여기까지는 중간 단계로 원격 저장소에 파일이 반영되지 않고,내">
+<meta property="og:description" content="로컬PC 작업 파일을 원격 저장소로 올리려면1)add 2)commit 3)push 명령을 사용해야 한다.">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://mkfdev.github.io/2017/09/17/images/git1.jpg">
-<meta property="og:updated_time" content="2017-12-07T17:44:13.586Z">
+<meta property="og:updated_time" content="2017-12-07T17:56:34.799Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GIT 기초 정리">
-<meta name="twitter:description" content="로컬PC 작업 파일을 원격 저장소로 올리려면1)add 2)commit 3)push 명령을 사용해야 한다.  1) 작업공간(local directory)에서 add 명령어를 통해 stage에 반영한다.2) commit 명령어를 통해 저장소에 반영한다.stage에 올렸던 데이터를 확정하는 단계이다.여기까지는 중간 단계로 원격 저장소에 파일이 반영되지 않고,내">
+<meta name="twitter:description" content="로컬PC 작업 파일을 원격 저장소로 올리려면1)add 2)commit 3)push 명령을 사용해야 한다.">
 <meta name="twitter:image" content="http://mkfdev.github.io/2017/09/17/images/git1.jpg">
 
 
@@ -387,6 +387,7 @@
       
         <p>로컬PC 작업 파일을 원격 저장소로 올리려면<br>1)add 2)commit 3)push 명령을 사용해야 한다.</p>
 <p><img src="../images/git1.jpg" alt="git process"></p>
+<a id="more"></a>
 <p>1) 작업공간(local directory)에서 add 명령어를 통해 stage에 반영한다.<br>2) commit 명령어를 통해 저장소에 반영한다.stage에 올렸던 데이터를 확정하는 단계이다.<br>여기까지는 중간 단계로 원격 저장소에 파일이 반영되지 않고,<br>내 PC에 있는 Git 로컬 저장소에만 존재한다.<br>3) push 명령어를 통해 원격 저장소에 반영한다.<br>git clone을 통해 원격 저장소의 파일을 읽어와서 작업했을 때,<br>$git push origin “push할 브랜치 이름”<br>ex) $git push origin master<br>원격 저장소를 정의해야 할 때,<br>$git remote add “원격저장소명 원격저장소주소”<br>ex) $git remote add origin <a href="http://github.com/" target="_blank" rel="noopener">http://github.com/</a>…</p>
 <h3 id="Repository-생성방법-1"><a href="#Repository-생성방법-1" class="headerlink" title="Repository 생성방법(1)"></a>Repository 생성방법(1)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$mkdir 디렉토리명</span><br><span class="line">$git init</span><br><span class="line">$git remote add origin 원격저장소주소</span><br></pre></td></tr></table></figure>
 <h3 id="Repository-생성방법-2"><a href="#Repository-생성방법-2" class="headerlink" title="Repository 생성방법(2)"></a>Repository 생성방법(2)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">github.com 웹에서 repository 생성</span><br><span class="line">$git add 파일명</span><br><span class="line">$git commit -m &quot;메세지&quot;</span><br><span class="line">$git remote add origin 원격저장소주소</span><br><span class="line">$git push origin master</span><br></pre></td></tr></table></figure>
