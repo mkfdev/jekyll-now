@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Built-in Object, String, Date," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Built-in ObjectHost Object 개발자가 직접 만든 객체  표준 빌트인 객체 (= Global Objects) 공통적으로 필요한 기능을 제공한다. Stinrg,Array,Object,Function,Boolean,Number,Math,Date,RegExp, 등등 대문자로 시작. 표준 빌트인 객체들은 생성자 함수이다.  표준 빌트인 객체의 프">
+<meta name="keywords" content="Built-in Object, String, Date">
+<meta property="og:type" content="article">
+<meta property="og:title" content="빌트인객체-1">
+<meta property="og:url" content="http://mkfdev.github.io/2017/10/10/TIL-1010/index.html">
+<meta property="og:site_name" content="FRONT.DEV.MK">
+<meta property="og:description" content="Built-in ObjectHost Object 개발자가 직접 만든 객체  표준 빌트인 객체 (= Global Objects) 공통적으로 필요한 기능을 제공한다. Stinrg,Array,Object,Function,Boolean,Number,Math,Date,RegExp, 등등 대문자로 시작. 표준 빌트인 객체들은 생성자 함수이다.  표준 빌트인 객체의 프">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-12-17T15:39:54.719Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="빌트인객체-1">
+<meta name="twitter:description" content="Built-in ObjectHost Object 개발자가 직접 만든 객체  표준 빌트인 객체 (= Global Objects) 공통적으로 필요한 기능을 제공한다. Stinrg,Array,Object,Function,Boolean,Number,Math,Date,RegExp, 등등 대문자로 시작. 표준 빌트인 객체들은 생성자 함수이다.  표준 빌트인 객체의 프">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mkfdev.github.io/2017/10/10/TIL-1010/"/>
+
+
+
+
+
+  <title>빌트인객체-1 | FRONT.DEV.MK</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FRONT.DEV.MK</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mkfdev.github.io/2017/10/10/TIL-1010/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Min Kyung">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FRONT.DEV.MK">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">빌트인객체-1</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-10T18:36:48+09:00">
+                2017-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/TIL/" itemprop="url" rel="index">
+                    <span itemprop="name">TIL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/10/TIL-1010/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/10/10/TIL-1010/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Built-in-Object"><a href="#Built-in-Object" class="headerlink" title="Built-in Object"></a>Built-in Object</h1><h2 id="Host-Object"><a href="#Host-Object" class="headerlink" title="Host Object"></a>Host Object</h2><ul>
+<li>개발자가 직접 만든 객체</li>
+</ul>
+<h2 id="표준-빌트인-객체-Global-Objects"><a href="#표준-빌트인-객체-Global-Objects" class="headerlink" title="표준 빌트인 객체 (= Global Objects)"></a>표준 빌트인 객체 (= Global Objects)</h2><ul>
+<li>공통적으로 필요한 기능을 제공한다.</li>
+<li>Stinrg,Array,Object,Function,Boolean,Number,Math,Date,RegExp, 등등 대문자로 시작.</li>
+<li>표준 빌트인 객체들은 생성자 함수이다.</li>
+</ul>
+<h2 id="표준-빌트인-객체의-프로퍼티-예"><a href="#표준-빌트인-객체의-프로퍼티-예" class="headerlink" title="표준 빌트인 객체의 프로퍼티(예)"></a>표준 빌트인 객체의 프로퍼티(예)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'abc'</span>.length; <span class="comment">//(문자-&gt;객체) length는 String의 프로퍼티.</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="전역-객체"><a href="#전역-객체" class="headerlink" title="전역 객체"></a>전역 객체</h2><ul>
+<li>전역 객체의 자식 객체를 사용할 때, window 생략이 가능하다. 예) window.alert(); -&gt; alert();</li>
+<li>전역변수를 프로퍼티로 가진다.</li>
+<li>참고 : 프로퍼티, 메서드를 계속 전역으로 선언하면 window 객체 영역이 커진다. (전역 변수를 사용할 때는 즉시 호출 함수(IIFE)를 사용하도록 한다.)</li>
+</ul>
+<h2 id="전역-프로퍼티-window-프로퍼티"><a href="#전역-프로퍼티-window-프로퍼티" class="headerlink" title="전역 프로퍼티(window.프로퍼티)"></a>전역 프로퍼티(window.프로퍼티)</h2><ul>
+<li>Infinity (Number.Infinity) : 양/음의 무한대를 나타내는 숫자값</li>
+<li>NaN (Number.NaN) : 숫자가 아님을 나타내는 숫자값 </li>
+<li>undefined : 기본자료형 undefined를 값으로 갖는다.</li>
+</ul>
+<h2 id="전역-함수"><a href="#전역-함수" class="headerlink" title="전역 함수"></a>전역 함수</h2><ul>
+<li>eval()</li>
+<li>isFinite() : 숫자로 변환하여 유한수인지를 판단한 후, 결과값을 Boolean으로 나타낸다.</li>
+<li>isNaN() : NaN인지를 검사하여 Boolean으로 반환한다.(숫자면 false)</li>
+<li>parseFloat() : 부동소수점 숫자로 변환하여 반환한다.</li>
+<li>parseInt() : 정수형 숫자로 변환하여 반환한다.</li>
+</ul>
+<h2 id="URI-형식"><a href="#URI-형식" class="headerlink" title="URI 형식"></a>URI 형식</h2><ul>
+<li>http, host(도메인), port 넘버, Path, Query(256개 가능), Pragment로 구성된다.</li>
+</ul>
+<h2 id="encodeURI-decodeURI"><a href="#encodeURI-decodeURI" class="headerlink" title="encodeURI() / decodeURI()"></a>encodeURI() / decodeURI()</h2><ul>
+<li>encodeURI() : URI의 문자들을 이스케이프 처리한다.</li>
+<li>decodeURI() : 이스케이프 처리된 문자를 다시 반환한다.</li>
+</ul>
+<h3 id="이스케이프"><a href="#이스케이프" class="headerlink" title="이스케이프"></a>이스케이프</h3><ul>
+<li>어떤 시스템에서도 읽을 수 있는 ASCII Character-set로 변환하는 것.</li>
+<li>특수문자/공백/한글일 경우, 정규표현식으로 이스케이프 처리된다.</li>
+</ul>
+<h2 id="encodeURIComponent-decodeURIComponent"><a href="#encodeURIComponent-decodeURIComponent" class="headerlink" title="encodeURIComponent() / decodeURIComponent()"></a>encodeURIComponent() / decodeURIComponent()</h2><ul>
+<li>Query 부분의 =, ?, &amp;를 인코딩한다.</li>
+<li>encodeURI()와 차이점은 encodeURI()는 =, ?, &amp;을 인코딩하지 않는다.</li>
+<li>알파벳, 0~9의 숫자, - _ . ! ~ * ‘ ( )는 이스케이프에서 제외된다.</li>
+</ul>
+<h2 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h2><p>자바스크립트는 비동기 처리하므로 try-catch문으로 에러 처리를 하지 않는다.</p>
+<h2 id="기본자료형과-래퍼객체"><a href="#기본자료형과-래퍼객체" class="headerlink" title="기본자료형과 래퍼객체"></a>기본자료형과 래퍼객체</h2><ul>
+<li>모든 기본자료형은 래퍼객체를 가지고 있다.</li>
+<li>예) ‘str’ -&gt; new String(‘str’)</li>
+<li>기본자료형을 객체처럼 사용할 수 있게 한다. (객체화되면 메소드 또는 프로퍼티를 호출할 수 있다.-&gt; str.length/ str.toUpperCase();)</li>
+<li>메소드를 호출하는 시점에만 객체화.</li>
+<li>호출이 종료되면 기본자료형으로 돌아온다.</li>
+</ul>
+<h2 id="string를-위한-레퍼객체-String"><a href="#string를-위한-레퍼객체-String" class="headerlink" title="string를 위한 레퍼객체(String)"></a>string를 위한 레퍼객체(String)</h2><ul>
+<li>기본자료형이 String(레퍼객체)의 메소드를 사용할수 있는 이유는 메소드나 프로퍼티를 호출할때 순간적으로 레퍼객체로 변환되어 프로토타입 객체를 상속받기 때문이다.</li>
+</ul>
+<h2 id="String-Constructor"><a href="#String-Constructor" class="headerlink" title="String Constructor"></a>String Constructor</h2><ul>
+<li>String 객체는 String()생성자 함수로 생성됨.</li>
+<li>전달되는 모든 인자는 문자열로 변환.</li>
+<li>length 프로퍼티를 가지고 있으며, 유사객체배열로 사용할 수 있다.</li>
+</ul>
+<h2 id="String-Property"><a href="#String-Property" class="headerlink" title="String Property"></a>String Property</h2><ul>
+<li>String은 원본(기본자료형)을 변경하지 않는다.</li>
+</ul>
+<h3 id="String-length"><a href="#String-length" class="headerlink" title="String.length"></a>String.length</h3><ul>
+<li>문자열의 문자 갯수를 반환<h2 id="String-Method"><a href="#String-Method" class="headerlink" title="String Method"></a>String Method</h2><h3 id="String-prototype-charAt-프로토타입-붙어있는것-확인"><a href="#String-prototype-charAt-프로토타입-붙어있는것-확인" class="headerlink" title="String.prototype.charAt() [프로토타입 붙어있는것 확인]"></a>String.prototype.charAt() [프로토타입 붙어있는것 확인]</h3></li>
+<li>index번호에 해당되는 위치의 문자 반환.</li>
+<li>0부터 시작한다.<h3 id="String-prototype-indexOf"><a href="#String-prototype-indexOf" class="headerlink" title="String.prototype.indexOf()"></a>String.prototype.indexOf()</h3></li>
+<li>문자또는 문자열을 검색해서 처음 찾은 곳의 index 반환.</li>
+<li>못찾으면 -1 반환.<h3 id="String-prototype-lastIndexOf"><a href="#String-prototype-lastIndexOf" class="headerlink" title="String.prototype.lastIndexOf()"></a>String.prototype.lastIndexOf()</h3></li>
+<li>자또는 문자열을 검색해서 마지막에 찾은 곳의 index 반환.</li>
+<li>못찾으면 -1 반환.</li>
+<li>참고로 인덱스의 값은 변하지 않음.<h3 id="String-prototype-replace"><a href="#String-prototype-replace" class="headerlink" title="String.prototype.replace()"></a>String.prototype.replace()</h3></li>
+<li>첫번째 인자의 문자열을 찾고 두번째 인자의 문자로 대처함.</li>
+<li>원본 문자열은 변하지 않음.</li>
+<li>첫번째 인자의 문자열이 검색된 문자열에 여러개 존재하면 첫번째만 바꿔줌.</li>
+<li>/hello/gi &lt;-첫번째 인자를 이렇게 넣으면 전체검색하여 다바꿔줌.</li>
+<li>정규표현식은 어려우니까 나중에 공부하자.<h3 id="String-prototype-split"><a href="#String-prototype-split" class="headerlink" title="String.prototype.split()"></a>String.prototype.split()</h3></li>
+<li>인자값에 넣은 문자열을 검색하여 그것을 토대로 문자를 분리후 배열로 반환[배열은 문자열로 들어감]</li>
+<li>마찬가지로 원본은 변하지 않는다.<h3 id="String-prototype-substring"><a href="#String-prototype-substring" class="headerlink" title="String.prototype.substring()"></a>String.prototype.substring()</h3></li>
+<li>첫번째 인자에 전달된 인덱스값의 문자부터 두번째 인자의 인덱스 값-1까지의 문자를 반환.</li>
+<li>두번째인수가 커야된다.<h3 id="String-prototype-toLowerCase"><a href="#String-prototype-toLowerCase" class="headerlink" title="String.prototype.toLowerCase()"></a>String.prototype.toLowerCase()</h3></li>
+<li>모두 소문자로 바꿈.<h3 id="String-prototype-toUpperCase"><a href="#String-prototype-toUpperCase" class="headerlink" title="String.prototype.toUpperCase()"></a>String.prototype.toUpperCase()</h3></li>
+<li>모두 대문자로 바꿈.<h3 id="3-9-String-prototype-trim"><a href="#3-9-String-prototype-trim" class="headerlink" title="3.9 String.prototype.trim()"></a>3.9 String.prototype.trim()</h3></li>
+<li>문자열의 양끝 공백을 제거한 후 문자반환.</li>
+<li>가운데 껴있는 공백은 제거안됨.</li>
+</ul>
+<h2 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h2><p>Date객체는 날짜와 시간을 위한 빌트인객체</p>
+<ul>
+<li>그러나 라이브러리로 대부분 사용.[알아만두자]</li>
+<li>1000&lt;–밀리초단위로 1초이다.</li>
+<li>1970년 1월 1일 00:00(UTC) 기점.</li>
+<li>UTC / GMT 같다고 보면되지만 UTC라 부르고 사용하자.</li>
+</ul>
+<h3 id="Date-Constructor"><a href="#Date-Constructor" class="headerlink" title="Date Constructor"></a>Date Constructor</h3><ul>
+<li>var d = new Date(‘2017/08/08/20:00:00’); 이 방법을 쓰자.</li>
+<li>월은 0~11까지의 정수로 표현되므로 주의하자.</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Built-in-Object-String-Date/" rel="tag"># Built-in Object, String, Date</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/02/TIL-1002/" rel="next" title="한 주간 배운 내용 Summary2">
+                <i class="fa fa-chevron-left"></i> 한 주간 배운 내용 Summary2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/12/TIL-1012/" rel="prev" title="실행 컨텍스트와 클로저">
+                실행 컨텍스트와 클로저 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2017/10/10/TIL-1010/"
+           data-title="빌트인객체-1" data-url="http://mkfdev.github.io/2017/10/10/TIL-1010/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Min Kyung</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/mkfdev" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Built-in-Object"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Built-in-Object" class="headerlink" title="Built-in Object"></a>Built-in Object</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Host-Object"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#Host-Object" class="headerlink" title="Host Object"></a>Host Object</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#표준-빌트인-객체-Global-Objects"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#xD45C;&#xC900;-&#xBE4C;&#xD2B8;&#xC778;-&#xAC1D;&#xCCB4;-Global-Objects" class="headerlink" title="&#xD45C;&#xC900; &#xBE4C;&#xD2B8;&#xC778; &#xAC1D;&#xCCB4; (= Global Objects)"></a>&#xD45C;&#xC900; &#xBE4C;&#xD2B8;&#xC778; &#xAC1D;&#xCCB4; (= Global Objects)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#표준-빌트인-객체의-프로퍼티-예"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#&#xD45C;&#xC900;-&#xBE4C;&#xD2B8;&#xC778;-&#xAC1D;&#xCCB4;&#xC758;-&#xD504;&#xB85C;&#xD37C;&#xD2F0;-&#xC608;" class="headerlink" title="&#xD45C;&#xC900; &#xBE4C;&#xD2B8;&#xC778; &#xAC1D;&#xCCB4;&#xC758; &#xD504;&#xB85C;&#xD37C;&#xD2F0;(&#xC608;)"></a>&#xD45C;&#xC900; &#xBE4C;&#xD2B8;&#xC778; &#xAC1D;&#xCCB4;&#xC758; &#xD504;&#xB85C;&#xD37C;&#xD2F0;(&#xC608;)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#전역-객체"><span class="nav-number">1.4.</span> <span class="nav-text"><a href="#&#xC804;&#xC5ED;-&#xAC1D;&#xCCB4;" class="headerlink" title="&#xC804;&#xC5ED; &#xAC1D;&#xCCB4;"></a>&#xC804;&#xC5ED; &#xAC1D;&#xCCB4;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#전역-프로퍼티-window-프로퍼티"><span class="nav-number">1.5.</span> <span class="nav-text"><a href="#&#xC804;&#xC5ED;-&#xD504;&#xB85C;&#xD37C;&#xD2F0;-window-&#xD504;&#xB85C;&#xD37C;&#xD2F0;" class="headerlink" title="&#xC804;&#xC5ED; &#xD504;&#xB85C;&#xD37C;&#xD2F0;(window.&#xD504;&#xB85C;&#xD37C;&#xD2F0;)"></a>&#xC804;&#xC5ED; &#xD504;&#xB85C;&#xD37C;&#xD2F0;(window.&#xD504;&#xB85C;&#xD37C;&#xD2F0;)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#전역-함수"><span class="nav-number">1.6.</span> <span class="nav-text"><a href="#&#xC804;&#xC5ED;-&#xD568;&#xC218;" class="headerlink" title="&#xC804;&#xC5ED; &#xD568;&#xC218;"></a>&#xC804;&#xC5ED; &#xD568;&#xC218;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URI-형식"><span class="nav-number">1.7.</span> <span class="nav-text"><a href="#URI-&#xD615;&#xC2DD;" class="headerlink" title="URI &#xD615;&#xC2DD;"></a>URI &#xD615;&#xC2DD;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#encodeURI-decodeURI"><span class="nav-number">1.8.</span> <span class="nav-text"><a href="#encodeURI-decodeURI" class="headerlink" title="encodeURI() / decodeURI()"></a>encodeURI() / decodeURI()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#이스케이프"><span class="nav-number">1.8.1.</span> <span class="nav-text"><a href="#&#xC774;&#xC2A4;&#xCF00;&#xC774;&#xD504;" class="headerlink" title="&#xC774;&#xC2A4;&#xCF00;&#xC774;&#xD504;"></a>&#xC774;&#xC2A4;&#xCF00;&#xC774;&#xD504;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#encodeURIComponent-decodeURIComponent"><span class="nav-number">1.9.</span> <span class="nav-text"><a href="#encodeURIComponent-decodeURIComponent" class="headerlink" title="encodeURIComponent() / decodeURIComponent()"></a>encodeURIComponent() / decodeURIComponent()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Error"><span class="nav-number">1.10.</span> <span class="nav-text"><a href="#Error" class="headerlink" title="Error"></a>Error</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#기본자료형과-래퍼객체"><span class="nav-number">1.11.</span> <span class="nav-text"><a href="#&#xAE30;&#xBCF8;&#xC790;&#xB8CC;&#xD615;&#xACFC;-&#xB798;&#xD37C;&#xAC1D;&#xCCB4;" class="headerlink" title="&#xAE30;&#xBCF8;&#xC790;&#xB8CC;&#xD615;&#xACFC; &#xB798;&#xD37C;&#xAC1D;&#xCCB4;"></a>&#xAE30;&#xBCF8;&#xC790;&#xB8CC;&#xD615;&#xACFC; &#xB798;&#xD37C;&#xAC1D;&#xCCB4;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#string를-위한-레퍼객체-String"><span class="nav-number">1.12.</span> <span class="nav-text"><a href="#string&#xB97C;-&#xC704;&#xD55C;-&#xB808;&#xD37C;&#xAC1D;&#xCCB4;-String" class="headerlink" title="string&#xB97C; &#xC704;&#xD55C; &#xB808;&#xD37C;&#xAC1D;&#xCCB4;(String)"></a>string&#xB97C; &#xC704;&#xD55C; &#xB808;&#xD37C;&#xAC1D;&#xCCB4;(String)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-Constructor"><span class="nav-number">1.13.</span> <span class="nav-text"><a href="#String-Constructor" class="headerlink" title="String Constructor"></a>String Constructor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-Property"><span class="nav-number">1.14.</span> <span class="nav-text"><a href="#String-Property" class="headerlink" title="String Property"></a>String Property</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#String-length"><span class="nav-number">1.14.1.</span> <span class="nav-text"><a href="#String-length" class="headerlink" title="String.length"></a>String.length</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-Method"><span class="nav-number">1.15.</span> <span class="nav-text"><a href="#String-Method" class="headerlink" title="String Method"></a>String Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#String-prototype-charAt-프로토타입-붙어있는것-확인"><span class="nav-number">1.15.1.</span> <span class="nav-text"><a href="#String-prototype-charAt-&#xD504;&#xB85C;&#xD1A0;&#xD0C0;&#xC785;-&#xBD99;&#xC5B4;&#xC788;&#xB294;&#xAC83;-&#xD655;&#xC778;" class="headerlink" title="String.prototype.charAt() [&#xD504;&#xB85C;&#xD1A0;&#xD0C0;&#xC785; &#xBD99;&#xC5B4;&#xC788;&#xB294;&#xAC83; &#xD655;&#xC778;]"></a>String.prototype.charAt() [&#xD504;&#xB85C;&#xD1A0;&#xD0C0;&#xC785; &#xBD99;&#xC5B4;&#xC788;&#xB294;&#xAC83; &#xD655;&#xC778;]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-prototype-indexOf"><span class="nav-number">1.15.2.</span> <span class="nav-text"><a href="#String-prototype-indexOf" class="headerlink" title="String.prototype.indexOf()"></a>String.prototype.indexOf()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-prototype-lastIndexOf"><span class="nav-number">1.15.3.</span> <span class="nav-text"><a href="#String-prototype-lastIndexOf" class="headerlink" title="String.prototype.lastIndexOf()"></a>String.prototype.lastIndexOf()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-prototype-replace"><span class="nav-number">1.15.4.</span> <span class="nav-text"><a href="#String-prototype-replace" class="headerlink" title="String.prototype.replace()"></a>String.prototype.replace()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-prototype-split"><span class="nav-number">1.15.5.</span> <span class="nav-text"><a href="#String-prototype-split" class="headerlink" title="String.prototype.split()"></a>String.prototype.split()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-prototype-substring"><span class="nav-number">1.15.6.</span> <span class="nav-text"><a href="#String-prototype-substring" class="headerlink" title="String.prototype.substring()"></a>String.prototype.substring()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-prototype-toLowerCase"><span class="nav-number">1.15.7.</span> <span class="nav-text"><a href="#String-prototype-toLowerCase" class="headerlink" title="String.prototype.toLowerCase()"></a>String.prototype.toLowerCase()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-prototype-toUpperCase"><span class="nav-number">1.15.8.</span> <span class="nav-text"><a href="#String-prototype-toUpperCase" class="headerlink" title="String.prototype.toUpperCase()"></a>String.prototype.toUpperCase()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-9-String-prototype-trim"><span class="nav-number">1.15.9.</span> <span class="nav-text"><a href="#3-9-String-prototype-trim" class="headerlink" title="3.9 String.prototype.trim()"></a>3.9 String.prototype.trim()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Date"><span class="nav-number">1.16.</span> <span class="nav-text"><a href="#Date" class="headerlink" title="Date"></a>Date</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Date-Constructor"><span class="nav-number">1.16.1.</span> <span class="nav-text"><a href="#Date-Constructor" class="headerlink" title="Date Constructor"></a>Date Constructor</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Min Kyung</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

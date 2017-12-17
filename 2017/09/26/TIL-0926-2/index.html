@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="operator, javascript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1. 산술연산자(Arithmetic Operators)   Operator Description     + 덧셈   - 뺄셈   * 곱셈   / 나눗셈   % 나머지   ++ 증가   – 감소">
+<meta name="keywords" content="operator, javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript 연산자와 형변환">
+<meta property="og:url" content="http://mkfdev.github.io/2017/09/26/TIL-0926-2/index.html">
+<meta property="og:site_name" content="FRONT.DEV.MK">
+<meta property="og:description" content="1. 산술연산자(Arithmetic Operators)   Operator Description     + 덧셈   - 뺄셈   * 곱셈   / 나눗셈   % 나머지   ++ 증가   – 감소">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-12-17T15:28:23.513Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript 연산자와 형변환">
+<meta name="twitter:description" content="1. 산술연산자(Arithmetic Operators)   Operator Description     + 덧셈   - 뺄셈   * 곱셈   / 나눗셈   % 나머지   ++ 증가   – 감소">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mkfdev.github.io/2017/09/26/TIL-0926-2/"/>
+
+
+
+
+
+  <title>javascript 연산자와 형변환 | FRONT.DEV.MK</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FRONT.DEV.MK</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mkfdev.github.io/2017/09/26/TIL-0926-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Min Kyung">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FRONT.DEV.MK">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">javascript 연산자와 형변환</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-26T20:20:16+09:00">
+                2017-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/TIL/" itemprop="url" rel="index">
+                    <span itemprop="name">TIL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/09/26/TIL-0926-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/26/TIL-0926-2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-산술연산자-Arithmetic-Operators"><a href="#1-산술연산자-Arithmetic-Operators" class="headerlink" title="1. 산술연산자(Arithmetic Operators)"></a>1. 산술연산자(Arithmetic Operators)</h2><table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>덧셈</td>
+</tr>
+<tr>
+<td>-</td>
+<td>뺄셈</td>
+</tr>
+<tr>
+<td>*</td>
+<td>곱셈</td>
+</tr>
+<tr>
+<td>/</td>
+<td>나눗셈</td>
+</tr>
+<tr>
+<td>%</td>
+<td>나머지</td>
+</tr>
+<tr>
+<td>++</td>
+<td>증가</td>
+</tr>
+<tr>
+<td>–</td>
+<td>감소</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<h3 id="연산자"><a href="#연산자" class="headerlink" title="+ 연산자"></a>+ 연산자</h3><ul>
+<li>연산 대상이 모두 숫자인 경우 : 덧셈 연산</li>
+<li>문자나 문자열이 포함된 경우 : 문자열 연결 연산<br>[참고] 연산 대상을 같은 타입으로 맞춰서 덧셈 연산자를 수행하도록 하는 것이 좋다.</li>
+</ul>
+<h3 id="–-증감-연산자"><a href="#–-증감-연산자" class="headerlink" title="++, – (증감 연산자)"></a>++, – (증감 연산자)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">z = x++;    // 5 선대입후증가</span><br><span class="line">z = ++x;    // 7 선증가후대입</span><br><span class="line">z = x--;    // 7 선대입후감소</span><br><span class="line">z = --x;    // 5 선감소후대입</span><br></pre></td></tr></table></figure>
+<h2 id="2-대입연산자-Assignment-Operators"><a href="#2-대입연산자-Assignment-Operators" class="headerlink" title="2. 대입연산자(Assignment Operators)"></a>2. 대입연산자(Assignment Operators)</h2><table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Example</th>
+<th>Same As</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>=</td>
+<td>x = y</td>
+<td>x = y</td>
+</tr>
+<tr>
+<td>+=</td>
+<td>x += y</td>
+<td>x = x + y</td>
+</tr>
+<tr>
+<td>-=</td>
+<td>x -= y</td>
+<td>x = x - y</td>
+</tr>
+<tr>
+<td>*=</td>
+<td>x *= y</td>
+<td>x = x * y</td>
+</tr>
+<tr>
+<td>/=</td>
+<td>x /= y</td>
+<td>x = x / y</td>
+</tr>
+<tr>
+<td>%=</td>
+<td>x %= y</td>
+<td>x = x % y</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-비교연산자-Comparison-Operators"><a href="#3-비교연산자-Comparison-Operators" class="headerlink" title="3. 비교연산자(Comparison Operators)"></a>3. 비교연산자(Comparison Operators)</h2><table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>==</td>
+<td>동등비교 (loose equality) 형변환 후, 비교한다.</td>
+</tr>
+<tr>
+<td>===</td>
+<td>일치비교 (strict equality) 타입까지 일치하여야 true를 반환한다.</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>부등비교</td>
+</tr>
+<tr>
+<td>!==</td>
+<td>불일치비교</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>관계비교</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>관계비교</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>관계비교</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>관계비교</td>
+</tr>
+<tr>
+<td>?</td>
+<td>삼항연산자</td>
+</tr>
+</tbody>
+</table>
+<h3 id="참고-와-연산자-비교"><a href="#참고-와-연산자-비교" class="headerlink" title="[참고] ==와 === 연산자 비교"></a>[참고] ==와 === 연산자 비교</h3><p>var num = 5;</p>
+<p>x == 5 // true<br>x == ‘5’ // true, 데이터형이 달라도 같게 변환하여 true를 반환한다.</p>
+<p>x === 5 // true<br>x === ‘5’ // false, 데이터형이 다르면 false를 반환한다.</p>
+<h2 id="4-논리-연산자-Logical-Operator"><a href="#4-논리-연산자-Logical-Operator" class="headerlink" title="4. 논리 연산자(Logical Operator)"></a>4. 논리 연산자(Logical Operator)</h2><table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>`</td>
+<td></td>
+<td>`</td>
+<td>or</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>and</td>
+</tr>
+<tr>
+<td>!</td>
+<td>not</td>
+</tr>
+</tbody>
+</table>
+<h3 id="논리-합-연산자"><a href="#논리-합-연산자" class="headerlink" title="|| (논리 합) 연산자"></a>|| (논리 합) 연산자</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o1 =  <span class="literal">true</span> || <span class="literal">true</span>;     <span class="comment">// t || t returns true</span></span><br><span class="line"><span class="keyword">var</span> o2 = <span class="literal">false</span> || <span class="literal">true</span>;     <span class="comment">// f || t returns true</span></span><br><span class="line"><span class="keyword">var</span> o3 =  <span class="literal">true</span> || <span class="literal">false</span>;    <span class="comment">// t || f returns true</span></span><br><span class="line"><span class="keyword">var</span> o4 = <span class="literal">false</span> || (<span class="number">3</span> == <span class="number">4</span>); <span class="comment">// f || f returns false</span></span><br></pre></td></tr></table></figure>
+<h3 id="amp-amp-논리곱-연산자"><a href="#amp-amp-논리곱-연산자" class="headerlink" title="&amp;&amp; (논리곱) 연산자"></a>&amp;&amp; (논리곱) 연산자</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 =  <span class="literal">true</span> &amp;&amp; <span class="literal">true</span>;     <span class="comment">// t &amp;&amp; t returns true</span></span><br><span class="line"><span class="keyword">var</span> a2 =  <span class="literal">true</span> &amp;&amp; <span class="literal">false</span>;    <span class="comment">// t &amp;&amp; f returns false</span></span><br><span class="line"><span class="keyword">var</span> a3 = <span class="literal">false</span> &amp;&amp; <span class="literal">true</span>;     <span class="comment">// f &amp;&amp; t returns false</span></span><br><span class="line"><span class="keyword">var</span> a4 = <span class="literal">false</span> &amp;&amp; (<span class="number">3</span> == <span class="number">4</span>); <span class="comment">// f &amp;&amp; f returns false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ! (논리 부정) 연산자</span></span><br><span class="line"><span class="keyword">var</span> n1 = !<span class="literal">true</span>;  <span class="comment">// false</span></span><br><span class="line"><span class="keyword">var</span> n2 = !<span class="literal">false</span>; <span class="comment">// true</span></span><br><span class="line"><span class="keyword">var</span> n3 = !<span class="string">'Cat'</span>; <span class="comment">// false (빈 문자열이 아닐 경우 true로 간주)</span></span><br></pre></td></tr></table></figure>
+<h3 id="참고-논리-부정-연산자로-값의-유무를-판별할-수-있다"><a href="#참고-논리-부정-연산자로-값의-유무를-판별할-수-있다" class="headerlink" title="[참고] 논리 부정 연산자로 값의 유무를 판별할 수 있다"></a>[참고] 논리 부정 연산자로 값의 유무를 판별할 수 있다</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">''</span>;</span><br><span class="line"><span class="built_in">console</span>.log(!str); <span class="comment">// true - str에 값이 없다.</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-단축-평가-Short-Circuit-Evaluations"><a href="#5-단축-평가-Short-Circuit-Evaluations" class="headerlink" title="5. 단축 평가(Short-Circuit Evaluations)"></a>5. 단축 평가(Short-Circuit Evaluations)</h2><ul>
+<li>Boolean값으로 평가하기 위해 참조하여야 할 곳까지 진행한 후, 평가를 중지하게된 계기가 된 값을 반환한다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>평가식</th>
+<th>평가결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>true `</td>
+<td></td>
+<td>` anyting</td>
+<td>true</td>
+</tr>
+<tr>
+<td>false `</td>
+<td></td>
+<td>` anything</td>
+<td>false</td>
+</tr>
+<tr>
+<td>true <code>&amp;&amp;</code> anything</td>
+<td>anyting</td>
+</tr>
+<tr>
+<td>false <code>&amp;&amp;</code> anything</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="string">'Cat'</span> &amp;&amp; <span class="string">'Dog'</span>  <span class="comment">// t &amp;&amp; t returns 'Dog'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>‘Cat’은 true이므로 ‘Dog’까지 평가해 보아야 한다.</li>
+<li>평가를 중지하게된 계기가 된 값 ‘Dog’을 반환한다. </li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="string">'Cat'</span> || <span class="string">'Dog'</span>  <span class="comment">// t || t returns 'Cat'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>‘Cat’은 true이므로 평가를 중지하고 ‘Cat’을 반환한다.</li>
+</ul>
+<h1 id="평가"><a href="#평가" class="headerlink" title="평가"></a>평가</h1><p>흐름제어를 위해서는 조건식을 평가하여 논리적 참, 거짓을 구별한 후 평가 결과에 따라 의사결정을 하는 것이 일반적이다.<br>이 때 자바스크립트는 암묵적 강제 형 변환을 통해 조건식을 평가한다.</p>
+<hr>
+<h2 id="암묵적-강제-형-변환-Type-coercion"><a href="#암묵적-강제-형-변환-Type-coercion" class="headerlink" title="암묵적 강제 형 변환 (Type coercion)"></a>암묵적 강제 형 변환 (Type coercion)</h2><p>Javascript는 context(문맥)을 고려하여 내부적으로 자료형을 암묵적으로 강제 변환하여 작업을 완료할 수 있다. </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'1'</span> &gt; <span class="number">0</span>)  <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> + <span class="string">'2'</span>) <span class="comment">// '12'</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span> - <span class="string">'1'</span>) <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'10'</span> == <span class="number">10</span>) <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h2 id="직접-형-변환"><a href="#직접-형-변환" class="headerlink" title="직접 형 변환"></a>직접 형 변환</h2><h3 id="string-gt-number"><a href="#string-gt-number" class="headerlink" title="string -&gt; number"></a><code>string -&gt; number</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> val = <span class="string">'123'</span>; <span class="comment">//문자열</span></span><br><span class="line"></span><br><span class="line">방법<span class="number">1</span>)</span><br><span class="line">val =+ val</span><br><span class="line"></span><br><span class="line">방법<span class="number">2</span>) </span><br><span class="line">val = val * <span class="number">1</span></span><br><span class="line"></span><br><span class="line">방법<span class="number">3</span>)</span><br><span class="line"><span class="built_in">Number</span>(value); <span class="comment">//객체를 만들때 사용, 사용권장안함</span></span><br><span class="line"></span><br><span class="line">방법<span class="number">4</span>)</span><br><span class="line"><span class="built_in">parseInt</span>(value);</span><br></pre></td></tr></table></figure>
+<h3 id="number-gt-string"><a href="#number-gt-string" class="headerlink" title="number -&gt; string"></a><code>number -&gt; string</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> val = <span class="number">123</span>; <span class="comment">//숫자</span></span><br><span class="line"></span><br><span class="line">방법<span class="number">1</span>) </span><br><span class="line">val = val + <span class="string">''</span>; <span class="comment">//권장</span></span><br><span class="line"></span><br><span class="line">방법<span class="number">2</span>) </span><br><span class="line">val = <span class="built_in">String</span>(val);</span><br><span class="line"></span><br><span class="line">방법<span class="number">3</span>)</span><br><span class="line">val = val.toString();</span><br></pre></td></tr></table></figure>
+<h2 id="Truthy-amp-Falsy-values"><a href="#Truthy-amp-Falsy-values" class="headerlink" title="Truthy &amp; Falsy values"></a>Truthy &amp; Falsy values</h2><ul>
+<li><code>Falsy values</code> : Boolean Context에서 false로 평가되는 값들</li>
+<li><code>Truthy Values</code> : Falsy values 이외의 값들이며(object포함) true로 평가된다.</li>
+</ul>
+<h3 id="Falsy-Values"><a href="#Falsy-Values" class="headerlink" title="Falsy Values"></a>Falsy Values</h3><ul>
+<li><code>false</code></li>
+<li><code>undefined</code></li>
+<li><code>null</code></li>
+<li><code>0</code></li>
+<li><code>NaN (Not a Number)</code></li>
+<li><code>&#39;&#39; (빈문자열)</code></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/operator-javascript/" rel="tag"># operator, javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/26/TIL-0926/" rel="next" title="javascript 자료형과 변수">
+                <i class="fa fa-chevron-left"></i> javascript 자료형과 변수
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/27/TIL-0927/" rel="prev" title="알고리즘 문제풀이">
+                알고리즘 문제풀이 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2017/09/26/TIL-0926-2/"
+           data-title="javascript 연산자와 형변환" data-url="http://mkfdev.github.io/2017/09/26/TIL-0926-2/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Min Kyung</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/mkfdev" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-산술연산자-Arithmetic-Operators"><span class="nav-number">1.</span> <span class="nav-text"><a href="#1-&#xC0B0;&#xC220;&#xC5F0;&#xC0B0;&#xC790;-Arithmetic-Operators" class="headerlink" title="1. &#xC0B0;&#xC220;&#xC5F0;&#xC0B0;&#xC790;(Arithmetic Operators)"></a>1. &#xC0B0;&#xC220;&#xC5F0;&#xC0B0;&#xC790;(Arithmetic Operators)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#연산자"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#xC5F0;&#xC0B0;&#xC790;" class="headerlink" title="+ &#xC5F0;&#xC0B0;&#xC790;"></a>+ &#xC5F0;&#xC0B0;&#xC790;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#–-증감-연산자"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x2013;-&#xC99D;&#xAC10;-&#xC5F0;&#xC0B0;&#xC790;" class="headerlink" title="++, &#x2013; (&#xC99D;&#xAC10; &#xC5F0;&#xC0B0;&#xC790;)"></a>++, &#x2013; (&#xC99D;&#xAC10; &#xC5F0;&#xC0B0;&#xC790;)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-대입연산자-Assignment-Operators"><span class="nav-number">2.</span> <span class="nav-text"><a href="#2-&#xB300;&#xC785;&#xC5F0;&#xC0B0;&#xC790;-Assignment-Operators" class="headerlink" title="2. &#xB300;&#xC785;&#xC5F0;&#xC0B0;&#xC790;(Assignment Operators)"></a>2. &#xB300;&#xC785;&#xC5F0;&#xC0B0;&#xC790;(Assignment Operators)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-비교연산자-Comparison-Operators"><span class="nav-number">3.</span> <span class="nav-text"><a href="#3-&#xBE44;&#xAD50;&#xC5F0;&#xC0B0;&#xC790;-Comparison-Operators" class="headerlink" title="3. &#xBE44;&#xAD50;&#xC5F0;&#xC0B0;&#xC790;(Comparison Operators)"></a>3. &#xBE44;&#xAD50;&#xC5F0;&#xC0B0;&#xC790;(Comparison Operators)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#참고-와-연산자-비교"><span class="nav-number">3.1.</span> <span class="nav-text"><a href="#&#xCC38;&#xACE0;-&#xC640;-&#xC5F0;&#xC0B0;&#xC790;-&#xBE44;&#xAD50;" class="headerlink" title="[&#xCC38;&#xACE0;] ==&#xC640; === &#xC5F0;&#xC0B0;&#xC790; &#xBE44;&#xAD50;"></a>[&#xCC38;&#xACE0;] ==&#xC640; === &#xC5F0;&#xC0B0;&#xC790; &#xBE44;&#xAD50;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-논리-연산자-Logical-Operator"><span class="nav-number">4.</span> <span class="nav-text"><a href="#4-&#xB17C;&#xB9AC;-&#xC5F0;&#xC0B0;&#xC790;-Logical-Operator" class="headerlink" title="4. &#xB17C;&#xB9AC; &#xC5F0;&#xC0B0;&#xC790;(Logical Operator)"></a>4. &#xB17C;&#xB9AC; &#xC5F0;&#xC0B0;&#xC790;(Logical Operator)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#논리-합-연산자"><span class="nav-number">4.1.</span> <span class="nav-text"><a href="#&#xB17C;&#xB9AC;-&#xD569;-&#xC5F0;&#xC0B0;&#xC790;" class="headerlink" title="|| (&#xB17C;&#xB9AC; &#xD569;) &#xC5F0;&#xC0B0;&#xC790;"></a>|| (&#xB17C;&#xB9AC; &#xD569;) &#xC5F0;&#xC0B0;&#xC790;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#amp-amp-논리곱-연산자"><span class="nav-number">4.2.</span> <span class="nav-text"><a href="#amp-amp-&#xB17C;&#xB9AC;&#xACF1;-&#xC5F0;&#xC0B0;&#xC790;" class="headerlink" title="&amp;&amp; (&#xB17C;&#xB9AC;&#xACF1;) &#xC5F0;&#xC0B0;&#xC790;"></a>&amp;&amp; (&#xB17C;&#xB9AC;&#xACF1;) &#xC5F0;&#xC0B0;&#xC790;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#참고-논리-부정-연산자로-값의-유무를-판별할-수-있다"><span class="nav-number">4.3.</span> <span class="nav-text"><a href="#&#xCC38;&#xACE0;-&#xB17C;&#xB9AC;-&#xBD80;&#xC815;-&#xC5F0;&#xC0B0;&#xC790;&#xB85C;-&#xAC12;&#xC758;-&#xC720;&#xBB34;&#xB97C;-&#xD310;&#xBCC4;&#xD560;-&#xC218;-&#xC788;&#xB2E4;" class="headerlink" title="[&#xCC38;&#xACE0;] &#xB17C;&#xB9AC; &#xBD80;&#xC815; &#xC5F0;&#xC0B0;&#xC790;&#xB85C; &#xAC12;&#xC758; &#xC720;&#xBB34;&#xB97C; &#xD310;&#xBCC4;&#xD560; &#xC218; &#xC788;&#xB2E4;"></a>[&#xCC38;&#xACE0;] &#xB17C;&#xB9AC; &#xBD80;&#xC815; &#xC5F0;&#xC0B0;&#xC790;&#xB85C; &#xAC12;&#xC758; &#xC720;&#xBB34;&#xB97C; &#xD310;&#xBCC4;&#xD560; &#xC218; &#xC788;&#xB2E4;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-단축-평가-Short-Circuit-Evaluations"><span class="nav-number">5.</span> <span class="nav-text"><a href="#5-&#xB2E8;&#xCD95;-&#xD3C9;&#xAC00;-Short-Circuit-Evaluations" class="headerlink" title="5. &#xB2E8;&#xCD95; &#xD3C9;&#xAC00;(Short-Circuit Evaluations)"></a>5. &#xB2E8;&#xCD95; &#xD3C9;&#xAC00;(Short-Circuit Evaluations)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#평가"><span class="nav-number"></span> <span class="nav-text"><a href="#&#xD3C9;&#xAC00;" class="headerlink" title="&#xD3C9;&#xAC00;"></a>&#xD3C9;&#xAC00;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#암묵적-강제-형-변환-Type-coercion"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#xC554;&#xBB35;&#xC801;-&#xAC15;&#xC81C;-&#xD615;-&#xBCC0;&#xD658;-Type-coercion" class="headerlink" title="&#xC554;&#xBB35;&#xC801; &#xAC15;&#xC81C; &#xD615; &#xBCC0;&#xD658; (Type coercion)"></a>&#xC554;&#xBB35;&#xC801; &#xAC15;&#xC81C; &#xD615; &#xBCC0;&#xD658; (Type coercion)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#직접-형-변환"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#xC9C1;&#xC811;-&#xD615;-&#xBCC0;&#xD658;" class="headerlink" title="&#xC9C1;&#xC811; &#xD615; &#xBCC0;&#xD658;"></a>&#xC9C1;&#xC811; &#xD615; &#xBCC0;&#xD658;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#string-gt-number"><span class="nav-number">2.1.</span> <span class="nav-text"><a href="#string-gt-number" class="headerlink" title="string -&gt; number"></a><code>string -&gt; number</code></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#number-gt-string"><span class="nav-number">2.2.</span> <span class="nav-text"><a href="#number-gt-string" class="headerlink" title="number -&gt; string"></a><code>number -&gt; string</code></span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Truthy-amp-Falsy-values"><span class="nav-number">3.</span> <span class="nav-text"><a href="#Truthy-amp-Falsy-values" class="headerlink" title="Truthy &amp; Falsy values"></a>Truthy &amp; Falsy values</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Falsy-Values"><span class="nav-number">3.1.</span> <span class="nav-text"><a href="#Falsy-Values" class="headerlink" title="Falsy Values"></a>Falsy Values</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Min Kyung</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

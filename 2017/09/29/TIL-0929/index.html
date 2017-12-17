@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="prototype, this객체, scope," />
 
 
 
@@ -86,13 +86,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="FRONT.DEV.MK">
-<meta property="og:url" content="http://mkfdev.github.io/archives/index.html">
+<meta name="description" content="prototype 프로토타입 prototype 프로퍼티:생성자가 생성될 객체의 부모 역할을 하는 프로토타입을 찾아갈 때 사용한다. __proto__ 프로퍼티:생성된 객체가 부모 역할을 하는 프로토타입을 찾아갈 때모든 객체는 [[prototype]]이라는 숨겨진 프로퍼티를 가진다. [[prototype]]이 정확한 명칭이고 __proto__와 의미는 같다.">
+<meta name="keywords" content="prototype, this객체, scope">
+<meta property="og:type" content="article">
+<meta property="og:title" content="프로토타입과 this">
+<meta property="og:url" content="http://mkfdev.github.io/2017/09/29/TIL-0929/index.html">
 <meta property="og:site_name" content="FRONT.DEV.MK">
+<meta property="og:description" content="prototype 프로토타입 prototype 프로퍼티:생성자가 생성될 객체의 부모 역할을 하는 프로토타입을 찾아갈 때 사용한다. __proto__ 프로퍼티:생성된 객체가 부모 역할을 하는 프로토타입을 찾아갈 때모든 객체는 [[prototype]]이라는 숨겨진 프로퍼티를 가진다. [[prototype]]이 정확한 명칭이고 __proto__와 의미는 같다.">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-12-17T15:32:25.097Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FRONT.DEV.MK">
+<meta name="twitter:title" content="프로토타입과 this">
+<meta name="twitter:description" content="prototype 프로토타입 prototype 프로퍼티:생성자가 생성될 객체의 부모 역할을 하는 프로토타입을 찾아갈 때 사용한다. __proto__ 프로퍼티:생성된 객체가 부모 역할을 하는 프로토타입을 찾아갈 때모든 객체는 [[prototype]]이라는 숨겨진 프로퍼티를 가진다. [[prototype]]이 정확한 명칭이고 __proto__와 의미는 같다.">
 
 
 
@@ -122,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://mkfdev.github.io/archives/"/>
+  <link rel="canonical" href="http://mkfdev.github.io/2017/09/29/TIL-0929/"/>
 
 
 
 
 
-  <title>Archive | FRONT.DEV.MK</title>
+  <title>프로토타입과 this | FRONT.DEV.MK</title>
   
 
 
@@ -147,7 +152,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -265,411 +270,215 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mkfdev.github.io/2017/09/29/TIL-0929/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Min Kyung">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FRONT.DEV.MK">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h2 class="post-title" itemprop="name headline">프로토타입과 this</h2>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-29T22:26:14+09:00">
+                2017-09-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        Um..! 15 posts in total. Keep on posting.
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/TIL/" itemprop="url" rel="index">
+                    <span itemprop="name">TIL</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h2 class="archive-year" id="archive-year-2017">2017</h2>
-          </div>
-        
-        
 
-        
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/09/29/TIL-0929/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/29/TIL-0929/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/12/18/TIL-1011/" itemprop="url">
-              
-                <span itemprop="name">빌트인객체-2</span>
-              
-            </a>
-        
-      </h3>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-18T00:39:18+09:00"
-              content="2017-12-18" >
-          12-18
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/12/TIL-1012/" itemprop="url">
-              
-                <span itemprop="name">실행 컨텍스트와 클로저</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-12T21:43:20+09:00"
-              content="2017-10-12" >
-          10-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/10/TIL-1010/" itemprop="url">
-              
-                <span itemprop="name">빌트인객체-1</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-10T18:36:48+09:00"
-              content="2017-10-10" >
-          10-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/02/TIL-1002/" itemprop="url">
-              
-                <span itemprop="name">한 주간 배운 내용 Summary2</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-02T22:28:13+09:00"
-              content="2017-10-02" >
-          10-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h1 id="prototype-프로토타입"><a href="#prototype-프로토타입" class="headerlink" title="prototype 프로토타입"></a>prototype 프로토타입</h1><ul>
+<li>prototype 프로퍼티:<br>생성자가 생성될 객체의 부모 역할을 하는 프로토타입을 찾아갈 때 사용한다.</li>
+<li><code>__proto__</code> 프로퍼티:<br>생성된 객체가 부모 역할을 하는 프로토타입을 찾아갈 때<br>모든 객체는 [[prototype]]이라는 숨겨진 프로퍼티를 가진다. [[prototype]]이 정확한 명칭이고 <code>__proto__</code>와 의미는 같다.</li>
+</ul>
+<p>-constructor 프로퍼티:<br>프로토타입은 constructor 객체를 가진다.<br>생성된 객체가 생성자를 찾아갈수 있게 한다.</p>
+<a id="more"></a>
+<h2 id="즉시호출함수표현식-IIFE-Immediately-Invoke-Function-Expression"><a href="#즉시호출함수표현식-IIFE-Immediately-Invoke-Function-Expression" class="headerlink" title="즉시호출함수표현식 (IIFE, Immediately Invoke Function Expression)"></a>즉시호출함수표현식 (IIFE, Immediately Invoke Function Expression)</h2><ul>
+<li>함수를 선언하자마자 호출한다.</li>
+<li>딱 한번만 호출된다.</li>
+<li>변수가 함수내에서만 유효하기 때문에 전역변수를 사용하지 않아서 변수 중복 선언 같은 문제를 방지할 수 있다.</li>
+</ul>
+<h2 id="내부함수"><a href="#내부함수" class="headerlink" title="내부함수"></a>내부함수</h2><ul>
+<li>함수 내부에 정의된 함수이다.</li>
+<li>부모함수, 외부에서는 내부함수에 접근할 수 없다.</li>
+</ul>
+<h2 id="프로토타입-객체"><a href="#프로토타입-객체" class="headerlink" title="프로토타입 객체"></a>프로토타입 객체</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> student = &#123;</span><br><span class="line">  name: <span class="string">'Lee'</span>,</span><br><span class="line">  score: <span class="number">90</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// student에는 hasOwnProperty 메소드가 없지만 아래 구문은 동작한다.</span></span><br><span class="line"><span class="built_in">console</span>.log(student.hasOwnProperty(<span class="string">'name'</span>)); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.dir(student);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>student의 프로포타입은 Object이다. (생성자 함수명이 Object)</li>
+</ul>
+<h2 id="프로토타입-객체의-확장"><a href="#프로토타입-객체의-확장" class="headerlink" title="프로토타입 객체의 확장"></a>프로토타입 객체의 확장</h2><h2 id="기본자료형-Primitive-data-type-의-확장"><a href="#기본자료형-Primitive-data-type-의-확장" class="headerlink" title="기본자료형(Primitive data type)의 확장"></a>기본자료형(Primitive data type)의 확장</h2><ul>
+<li>기본자료형은 객체가 아니므로 프로퍼티와 메서드가 없지만<br>프로퍼티나 메서드가 호출할 때 일시적으로 객체형이 된다.</li>
+</ul>
+<h1 id="Scope-유효범위"><a href="#Scope-유효범위" class="headerlink" title="Scope 유효범위"></a>Scope 유효범위</h1><h2 id="전역변수-Global-variable"><a href="#전역변수-Global-variable" class="headerlink" title="전역변수(Global variable)"></a>전역변수(Global variable)</h2><ul>
+<li>코드 어디서든 참조할 수 있다.<h2 id="지역변수-Local-variable-or-function-level-variable"><a href="#지역변수-Local-variable-or-function-level-variable" class="headerlink" title="지역변수(Local variable or function-level variable)"></a>지역변수(Local variable or function-level variable)</h2></li>
+<li>정의 된 함수 내에서만 참조할 수 있다.</li>
+</ul>
+<h1 id="this"><a href="#this" class="headerlink" title="this"></a>this</h1><ul>
+<li>메서드, 생성자를 제외한 모든 객체의 this는 window이다.</li>
+<li>new 연산자가 없는 그냥 함수에서의 this는 window이다.</li>
+<li>기존함수에 new 연산자를 붙여서 호출하면 생성자 함수로 동작한다.</li>
+<li>생성자 함수로 동작할 때 this는 자신이 생성할 객체를 가리킨다.</li>
+<li>메서드의 this는 해당 메서드의 소유주이다.</li>
+</ul>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/01/TIL-1001/" itemprop="url">
-              
-                <span itemprop="name">한 주간 배운 내용 Summary</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-01T18:30:13+09:00"
-              content="2017-10-01" >
-          10-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/29/TIL-0929/" itemprop="url">
-              
-                <span itemprop="name">프로토타입과 this</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-29T22:26:14+09:00"
-              content="2017-09-29" >
-          09-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/28/TIL-0928/" itemprop="url">
-              
-                <span itemprop="name">객체와 생성자함수</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-28T20:23:34+09:00"
-              content="2017-09-28" >
-          09-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/27/TIL-0927/" itemprop="url">
-              
-                <span itemprop="name">알고리즘 문제풀이</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-27T18:21:14+09:00"
-              content="2017-09-27" >
-          09-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/26/TIL-0926-2/" itemprop="url">
-              
-                <span itemprop="name">javascript 연산자와 형변환</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-26T20:20:16+09:00"
-              content="2017-09-26" >
-          09-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/26/TIL-0926/" itemprop="url">
-              
-                <span itemprop="name">javascript 자료형과 변수</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-26T20:15:16+09:00"
-              content="2017-09-26" >
-          09-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/prototype-this객체-scope/" rel="tag"># prototype, this객체, scope</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/28/TIL-0928/" rel="next" title="객체와 생성자함수">
+                <i class="fa fa-chevron-left"></i> 객체와 생성자함수
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/01/TIL-1001/" rel="prev" title="한 주간 배운 내용 Summary">
+                한 주간 배운 내용 Summary <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -677,6 +486,17 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2017/09/29/TIL-0929/"
+           data-title="프로토타입과 this" data-url="http://mkfdev.github.io/2017/09/29/TIL-0929/">
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -697,8 +517,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -768,6 +597,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#prototype-프로토타입"><span class="nav-number">1.</span> <span class="nav-text"><a href="#prototype-&#xD504;&#xB85C;&#xD1A0;&#xD0C0;&#xC785;" class="headerlink" title="prototype &#xD504;&#xB85C;&#xD1A0;&#xD0C0;&#xC785;"></a>prototype &#xD504;&#xB85C;&#xD1A0;&#xD0C0;&#xC785;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#즉시호출함수표현식-IIFE-Immediately-Invoke-Function-Expression"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#xC989;&#xC2DC;&#xD638;&#xCD9C;&#xD568;&#xC218;&#xD45C;&#xD604;&#xC2DD;-IIFE-Immediately-Invoke-Function-Expression" class="headerlink" title="&#xC989;&#xC2DC;&#xD638;&#xCD9C;&#xD568;&#xC218;&#xD45C;&#xD604;&#xC2DD; (IIFE, Immediately Invoke Function Expression)"></a>&#xC989;&#xC2DC;&#xD638;&#xCD9C;&#xD568;&#xC218;&#xD45C;&#xD604;&#xC2DD; (IIFE, Immediately Invoke Function Expression)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#내부함수"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#xB0B4;&#xBD80;&#xD568;&#xC218;" class="headerlink" title="&#xB0B4;&#xBD80;&#xD568;&#xC218;"></a>&#xB0B4;&#xBD80;&#xD568;&#xC218;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#프로토타입-객체"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#&#xD504;&#xB85C;&#xD1A0;&#xD0C0;&#xC785;-&#xAC1D;&#xCCB4;" class="headerlink" title="&#xD504;&#xB85C;&#xD1A0;&#xD0C0;&#xC785; &#xAC1D;&#xCCB4;"></a>&#xD504;&#xB85C;&#xD1A0;&#xD0C0;&#xC785; &#xAC1D;&#xCCB4;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#프로토타입-객체의-확장"><span class="nav-number">1.4.</span> <span class="nav-text"><a href="#&#xD504;&#xB85C;&#xD1A0;&#xD0C0;&#xC785;-&#xAC1D;&#xCCB4;&#xC758;-&#xD655;&#xC7A5;" class="headerlink" title="&#xD504;&#xB85C;&#xD1A0;&#xD0C0;&#xC785; &#xAC1D;&#xCCB4;&#xC758; &#xD655;&#xC7A5;"></a>&#xD504;&#xB85C;&#xD1A0;&#xD0C0;&#xC785; &#xAC1D;&#xCCB4;&#xC758; &#xD655;&#xC7A5;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#기본자료형-Primitive-data-type-의-확장"><span class="nav-number">1.5.</span> <span class="nav-text"><a href="#&#xAE30;&#xBCF8;&#xC790;&#xB8CC;&#xD615;-Primitive-data-type-&#xC758;-&#xD655;&#xC7A5;" class="headerlink" title="&#xAE30;&#xBCF8;&#xC790;&#xB8CC;&#xD615;(Primitive data type)&#xC758; &#xD655;&#xC7A5;"></a>&#xAE30;&#xBCF8;&#xC790;&#xB8CC;&#xD615;(Primitive data type)&#xC758; &#xD655;&#xC7A5;</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Scope-유효범위"><span class="nav-number">2.</span> <span class="nav-text"><a href="#Scope-&#xC720;&#xD6A8;&#xBC94;&#xC704;" class="headerlink" title="Scope &#xC720;&#xD6A8;&#xBC94;&#xC704;"></a>Scope &#xC720;&#xD6A8;&#xBC94;&#xC704;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#전역변수-Global-variable"><span class="nav-number">2.1.</span> <span class="nav-text"><a href="#&#xC804;&#xC5ED;&#xBCC0;&#xC218;-Global-variable" class="headerlink" title="&#xC804;&#xC5ED;&#xBCC0;&#xC218;(Global variable)"></a>&#xC804;&#xC5ED;&#xBCC0;&#xC218;(Global variable)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#지역변수-Local-variable-or-function-level-variable"><span class="nav-number">2.2.</span> <span class="nav-text"><a href="#&#xC9C0;&#xC5ED;&#xBCC0;&#xC218;-Local-variable-or-function-level-variable" class="headerlink" title="&#xC9C0;&#xC5ED;&#xBCC0;&#xC218;(Local variable or function-level variable)"></a>&#xC9C0;&#xC5ED;&#xBCC0;&#xC218;(Local variable or function-level variable)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#this"><span class="nav-number">3.</span> <span class="nav-text"><a href="#this" class="headerlink" title="this"></a>this</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -901,6 +746,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 

@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="javascript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="map, filter, reduce* 원본 배열이 변경되지 않는다.  Array.prototype.some()= 조건에 부합하는게 하나라도 있으면 참 Number 기본자료형 number를 위한 wrapper 객체 기본자료형으로 프로퍼티나 메소드를 호출할 때 기본자료형과 연관된 wrapper 객체로 일시적으로 변환되어 프로토타입 객체를 공유하게 되기 때문에">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="한 주간 배운 내용 Summary2">
+<meta property="og:url" content="http://mkfdev.github.io/2017/10/02/TIL-1002/index.html">
+<meta property="og:site_name" content="FRONT.DEV.MK">
+<meta property="og:description" content="map, filter, reduce* 원본 배열이 변경되지 않는다.  Array.prototype.some()= 조건에 부합하는게 하나라도 있으면 참 Number 기본자료형 number를 위한 wrapper 객체 기본자료형으로 프로퍼티나 메소드를 호출할 때 기본자료형과 연관된 wrapper 객체로 일시적으로 변환되어 프로토타입 객체를 공유하게 되기 때문에">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-12-17T15:36:06.395Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="한 주간 배운 내용 Summary2">
+<meta name="twitter:description" content="map, filter, reduce* 원본 배열이 변경되지 않는다.  Array.prototype.some()= 조건에 부합하는게 하나라도 있으면 참 Number 기본자료형 number를 위한 wrapper 객체 기본자료형으로 프로퍼티나 메소드를 호출할 때 기본자료형과 연관된 wrapper 객체로 일시적으로 변환되어 프로토타입 객체를 공유하게 되기 때문에">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mkfdev.github.io/2017/10/02/TIL-1002/"/>
+
+
+
+
+
+  <title>한 주간 배운 내용 Summary2 | FRONT.DEV.MK</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FRONT.DEV.MK</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mkfdev.github.io/2017/10/02/TIL-1002/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Min Kyung">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FRONT.DEV.MK">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">한 주간 배운 내용 Summary2</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-02T22:28:13+09:00">
+                2017-10-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/TIL/" itemprop="url" rel="index">
+                    <span itemprop="name">TIL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/02/TIL-1002/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/10/02/TIL-1002/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="map-filter-reduce"><a href="#map-filter-reduce" class="headerlink" title="map, filter, reduce*"></a>map, filter, reduce<strong>*</strong></h3><ul>
+<li>원본 배열이 변경되지 않는다.</li>
+</ul>
+<h3 id="Array-prototype-some"><a href="#Array-prototype-some" class="headerlink" title="Array.prototype.some()"></a>Array.prototype.some()</h3><p>= 조건에 부합하는게 하나라도 있으면 참</p>
+<h1 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h1><ul>
+<li>기본자료형 number를 위한 wrapper 객체</li>
+<li>기본자료형으로 프로퍼티나 메소드를 호출할 때 기본자료형과 연관된 wrapper 객체로 일시적으로 변환되어 프로토타입 객체를 공유하게 되기 때문에 기본자료형이 wrapper 객체 메소드를 사용할 수 있다.</li>
+</ul>
+<a id="more"></a>
+<h1 id="Number-Constructor"><a href="#Number-Constructor" class="headerlink" title="Number Constructor"></a>Number Constructor</h1><ul>
+<li>new Number(value)</li>
+<li>숫자로 변환할 수 없다면 NaN을 반환한다.</li>
+<li>기본자료형 숫자 반환 방식은 Number(Value)</li>
+<li>new Number와 Number 형 비교<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">123</span>;</span><br><span class="line"><span class="keyword">var</span> y = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">123</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(x == y);  <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(x === y); <span class="comment">// false (타입이 다르다)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> x); <span class="comment">// number</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> y); <span class="comment">// object</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="Number-Property"><a href="#Number-Property" class="headerlink" title="Number Property"></a>Number Property</h1><h2 id="Number-MAX-VALUE"><a href="#Number-MAX-VALUE" class="headerlink" title="Number.MAX_VALUE"></a>Number.MAX_VALUE</h2><ul>
+<li>자바스크립트에서 사용 가능한 가장 큰 숫자이다.</li>
+<li>MAX_VAULE보다 큰 숫자는 Infinity 이다.</li>
+</ul>
+<h2 id="Number-MIN-VALUE"><a href="#Number-MIN-VALUE" class="headerlink" title="Number.MIN_VALUE"></a>Number.MIN_VALUE</h2><ul>
+<li>0에 가장 가까운 양수값이다.</li>
+<li>MIN_VALUE보다 작은 숫자는 0 이다.</li>
+</ul>
+<h2 id="Number-POSITIVE-INFINITY"><a href="#Number-POSITIVE-INFINITY" class="headerlink" title="Number.POSITIVE_INFINITY"></a>Number.POSITIVE_INFINITY</h2><ul>
+<li>양의 무한대 Infinity를 반환한다.</li>
+</ul>
+<h2 id="Number-NEGATIVE-INFINITY"><a href="#Number-NEGATIVE-INFINITY" class="headerlink" title="Number.NEGATIVE_INFINITY"></a>Number.NEGATIVE_INFINITY</h2><ul>
+<li>음의 무한대 -Infinity를 반환한다.</li>
+</ul>
+<h2 id="Number-NaN"><a href="#Number-NaN" class="headerlink" title="Number.NaN"></a>Number.NaN</h2><ul>
+<li>숫자가 아님을 나타낸다.</li>
+<li>window.NaN과 같다.</li>
+</ul>
+<h1 id="Number-Method"><a href="#Number-Method" class="headerlink" title="Number Method"></a>Number Method</h1><ul>
+<li>숫자가 아닐 경우, 인수를 숫자로 변환하지 않고 false를 반환한다.</li>
+</ul>
+<h2 id="Number-isFinite-value"><a href="#Number-isFinite-value" class="headerlink" title="Number.isFinite(value)"></a>Number.isFinite(value)</h2><ul>
+<li>매개변수 값이 정상적인 유한수인지를 검사하여 Boolean값을 반환한다.</li>
+<li>전역 함수 isFinite(value)는 인수를 숫자로 변환하여 결과값을 반환한다.</li>
+</ul>
+<h2 id="Number-isInteger-value"><a href="#Number-isInteger-value" class="headerlink" title="Number.isInteger(value)"></a>Number.isInteger(value)</h2><ul>
+<li>매개변수 값이 정수인지 검사하여 Boolean값으로 반환한다.</li>
+</ul>
+<h2 id="Number-isNaN-value"><a href="#Number-isNaN-value" class="headerlink" title="Number.isNaN(value)"></a>Number.isNaN(value)</h2><ul>
+<li>매개변수 값이 NaN인지를 검사하여 Boolean값을 반환한다.</li>
+<li>Not a Number 숫자가 아니면 true 반환한다.</li>
+</ul>
+<h2 id="Number-isSafeInteger"><a href="#Number-isSafeInteger" class="headerlink" title="Number.isSafeInteger()"></a>Number.isSafeInteger()</h2><ul>
+<li>매개변수 값이 안전한 정수 값인지를 검사하여 Boolean값을 반환한다.</li>
+<li>안전한 정수 값은 (253 - 1)와 -(253 - 1) 사이의 정수이다.</li>
+</ul>
+<h2 id="Number-prototype-toExponential"><a href="#Number-prototype-toExponential" class="headerlink" title="Number.prototype.toExponential()"></a>Number.prototype.toExponential()</h2><ul>
+<li>지수 표기법으로 변환하여 문자열로 반환한다.</li>
+<li>예를들어, 1.234e+3는 e(xponential)의 앞에 있는 숫자의 10의 3승을 나타낸다.</li>
+<li>변수.toExponential(n); 반올림하여 소수 n번째 짜리까지 지수 표기법으로 반환한다.</li>
+<li>인수는 0~20까지 입력할 수 있다.</li>
+</ul>
+<h2 id="Number-prototype-toFixed"><a href="#Number-prototype-toFixed" class="headerlink" title="Number.prototype.toFixed()"></a>Number.prototype.toFixed()</h2><ul>
+<li>매개변수로 지정된 소수점 자리를 반올림하여 문자열로 반환한다.</li>
+</ul>
+<h2 id="Number-prototype-toPrecision"><a href="#Number-prototype-toPrecision" class="headerlink" title="Number.prototype.toPrecision()"></a>Number.prototype.toPrecision()</h2><ul>
+<li>지정된 전체 자릿수까지 유효하도록 반올림하여 문자열로 반환한다. </li>
+<li>지정된 전체 자릿수로 표현할 수 없을 경우 지수표기법으로 쓴다.</li>
+</ul>
+<h2 id="Number-prototype-toString"><a href="#Number-prototype-toString" class="headerlink" title="Number.prototype.toString()"></a>Number.prototype.toString()</h2><ul>
+<li>숫자를 문자열로 변환하여 반환한다.</li>
+<li>toString(n) n은 2~36값으로 진수를 나타낸다.</li>
+</ul>
+<hr>
+<h1 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h1><ul>
+<li>수학 상수와 함수를 위한 프로퍼티와 메소드를 제공하는 빌트인 객체이다.</li>
+</ul>
+<h1 id="Math-Property"><a href="#Math-Property" class="headerlink" title="Math Property"></a>Math Property</h1><h2 id="Math-PI"><a href="#Math-PI" class="headerlink" title="Math.PI"></a>Math.PI</h2><ul>
+<li>PI값을 반환한다.</li>
+</ul>
+<h1 id="Math-Method"><a href="#Math-Method" class="headerlink" title="Math Method"></a>Math Method</h1><h2 id="Math-abs"><a href="#Math-abs" class="headerlink" title="Math.abs()"></a>Math.abs()</h2><ul>
+<li>0 또는 양수인 절대값을 반환한다.</li>
+<li>숫자가 아닐 경우 NaN을 반환한다.</li>
+</ul>
+<h2 id="Math-round"><a href="#Math-round" class="headerlink" title="Math.round()"></a>Math.round()</h2><ul>
+<li>가장 인접한 정수로 올림/내림한다.</li>
+<li>x = Math.round(-20.5); // -20</li>
+<li>x = Math.round(-20.51); // -21</li>
+</ul>
+<h2 id="Math-sqrt"><a href="#Math-sqrt" class="headerlink" title="Math.sqrt()"></a>Math.sqrt()</h2><ul>
+<li>양의 제곱근을 반환한다.</li>
+</ul>
+<h2 id="Math-ceil"><a href="#Math-ceil" class="headerlink" title="Math.ceil()"></a>Math.ceil()</h2><ul>
+<li>지정된 숫자를 자신보다 크고, 가까운 정수로 올림한다.</li>
+</ul>
+<h2 id="Math-floor"><a href="#Math-floor" class="headerlink" title="Math.floor()"></a>Math.floor()</h2><ul>
+<li>지정된 숫자를 자기보다 작고, 가까운 정수로 내림한다.</li>
+</ul>
+<h2 id="Math-random"><a href="#Math-random" class="headerlink" title="Math.random()"></a>Math.random()</h2><ul>
+<li>0과 1 사이의 임의의 숫자를 반환한다.</li>
+<li>(Math.random() * 10) + 1 : 1에서 10까지의 임의의 숫자를 반환한다.</li>
+</ul>
+<h2 id="Math-pow"><a href="#Math-pow" class="headerlink" title="Math.pow()"></a>Math.pow()</h2><ul>
+<li>첫번째 인수를 밑, 두번째 인수를 지수로 하여 거듭제곱을 반환한다.</li>
+<li>Math.pow(7,2); // 49</li>
+</ul>
+<h2 id="Math-max"><a href="#Math-max" class="headerlink" title="Math.max()"></a>Math.max()</h2><ul>
+<li>인수중에 가장 큰 수를 반환한다.</li>
+<li>배열을 인자값으로 받을때는 apply를 사용한다.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">var</span> max = <span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, arr);</span><br><span class="line"></span><br><span class="line"><span class="comment">//ES6에서 사용법</span></span><br><span class="line"><span class="keyword">var</span> max <span class="built_in">Math</span>.max(...arr);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Math-min"><a href="#Math-min" class="headerlink" title="Math.min()"></a>Math.min()</h2><ul>
+<li>인수중에 가장 작은 수를 반환한다.</li>
+</ul>
+<hr>
+<h1 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h1><ul>
+<li>날짜와 시간(년,월,일,시,분,초)을 위한 빌트인 객체이다.</li>
+<li>UTC(협정 세계시)는 GMT(그리니치 평균시)라고도 한다.</li>
+<li>KST(Korea Standard Time)은 UTC보다 9시간이 빠르다.</li>
+<li>현재의 날짜와 시간은 자바스크립트 코드가 동작한 시스템의 시계에 의해 결정된다.</li>
+</ul>
+<h1 id="Date의-Constructor"><a href="#Date의-Constructor" class="headerlink" title="Date의 Constructor"></a>Date의 Constructor</h1><ul>
+<li>Date 생성자를 이용하여 날짜와 시간을 가지는 인스턴스를 생성한다. </li>
+<li>기본적으로 현재 날짜와 시간을 나타내는 값을 가진다.</li>
+<li>new Date()</li>
+<li>new 연산자 없이 Date()를 사용하면 결과값을 객체가 아닌 문자열로 반환한다.</li>
+</ul>
+<h2 id="new-Date"><a href="#new-Date" class="headerlink" title="new Date()"></a>new Date()</h2><ul>
+<li>매개변수가 없는 경우, 현재 날짜와 시간을 가지는 인스턴스를 반환한다.</li>
+</ul>
+<h2 id="new-Date-milliseconds"><a href="#new-Date-milliseconds" class="headerlink" title="new Date(milliseconds)"></a>new Date(milliseconds)</h2><ul>
+<li>1970년 1월 1일 00:00(UTC)을 기점으로 전달된 밀리초만큼 경과한 날짜와 시간을 가지는 인스턴스를 반환한다.</li>
+</ul>
+<h2 id="new-Date-dateString"><a href="#new-Date-dateString" class="headerlink" title="new Date(dateString)"></a>new Date(dateString)</h2><ul>
+<li>지정된 날짜와 시간을 가지는 인스턴스를 반환한다.</li>
+<li>var d = new Date(‘May 12, 2016 12:13:00’);</li>
+<li>var d = new Date(‘2017/08/08/20:00:00’);</li>
+</ul>
+<h2 id="new-Date-year-month-day-hour-minute-second-millisecond"><a href="#new-Date-year-month-day-hour-minute-second-millisecond" class="headerlink" title="new Date(year, month[, day, hour, minute, second, millisecond])"></a>new Date(year, month[, day, hour, minute, second, millisecond])</h2><ul>
+<li>매개변수에 년,월,일,시,분,초,밀리초를 의미하는 숫자를 전달하면 지정된 날짜와 시간을 가지는 인스턴스를 반환한다.</li>
+<li>year 1990년 이후의 년</li>
+<li>month 월을 나타내는 0~11까지의 정수(1월은 0)</li>
+</ul>
+<h1 id="Date-Method"><a href="#Date-Method" class="headerlink" title="Date Method"></a>Date Method</h1><h2 id="Date-now"><a href="#Date-now" class="headerlink" title="Date.now()"></a>Date.now()</h2><ul>
+<li>1970년 1월 1일 00:00:00(UTC)을 기점으로 현재 시간까지 경과한 밀리초를 숫자로 반환한다.</li>
+</ul>
+<h2 id="Date-parse"><a href="#Date-parse" class="headerlink" title="Date.parse()"></a>Date.parse()</h2><ul>
+<li>1970년 1월 1일 00:00:00(UTC)을 기점으로 매개변수로 전달된 지정 시간까지의 밀리초를 숫자로 반환한다.</li>
+<li>var d = Date.parse(‘Jan 2, 1970 00:00:00 UTC’); // UTC</li>
+<li>var d = Date.parse(‘Jan 2, 1970 09:00:00’); // KST</li>
+<li>var d = Date.parse(‘1970/01/02/09:00:00’); // KST</li>
+</ul>
+<h2 id="Date-UTC"><a href="#Date-UTC" class="headerlink" title="Date.UTC()"></a>Date.UTC()</h2><ul>
+<li>1970년 1월 1일 00:00:00(UTC)을 기점으로 매개변수로 전달된 지정 시간까지의 밀리초를 숫자로 반환한다.</li>
+<li>var d = Date.UTC(1970, 0, 2);</li>
+<li>var d = Date.UTC(‘1970/1/2’); //NaN 이 형식으로는 인식되지 않는다.</li>
+</ul>
+<h2 id="Date-prototype-getFullYear-getMonth-getDate-getDay-getHours-getMinutes-getSeconds-getMilliseconds-getTime"><a href="#Date-prototype-getFullYear-getMonth-getDate-getDay-getHours-getMinutes-getSeconds-getMilliseconds-getTime" class="headerlink" title="Date.prototype.getFullYear() / getMonth() / getDate() / getDay() / getHours() / getMinutes() / getSeconds() / getMilliseconds() / getTime()"></a>Date.prototype.getFullYear() / getMonth() / getDate() / getDay() / getHours() / getMinutes() / getSeconds() / getMilliseconds() / getTime()</h2><ul>
+<li>해당 연도/월/일/요일을 나타내는 4자리 숫자를 반환한다.</li>
+<li>getTime()은 1970년 1월 1일 00:00:00(UTC)를 기점으로 현재 시간까지 경과된 밀리초를 반환한다.</li>
+</ul>
+<h2 id="Date-prototype-setFullYear-setMonth-setDate-setDay-setHours-setMinutes-setSeconds-setMilliseconds-setTime"><a href="#Date-prototype-setFullYear-setMonth-setDate-setDay-setHours-setMinutes-setSeconds-setMilliseconds-setTime" class="headerlink" title="Date.prototype.setFullYear() / setMonth() / setDate() / setDay() / setHours() / setMinutes() / setSeconds() / setMilliseconds() / setTime()"></a>Date.prototype.setFullYear() / setMonth() / setDate() / setDay() / setHours() / setMinutes() / setSeconds() / setMilliseconds() / setTime()</h2><ul>
+<li>해당 연도/월/일/요일을 나타내는 4자리 숫자를 설정한다.</li>
+<li>setFullYear() 연도 이외의 월,일을 설정할 수 있다.</li>
+</ul>
+<h2 id="Date-prototype-getTimezoneOffset"><a href="#Date-prototype-getTimezoneOffset" class="headerlink" title="Date.prototype.getTimezoneOffset()"></a>Date.prototype.getTimezoneOffset()</h2><ul>
+<li>UTC와 지정 로케일(Locale) 시간과의 차이를 분단위로 반환한다.</li>
+</ul>
+<h2 id="Date-prototype-toDateString-Date-prototype-toTimeString"><a href="#Date-prototype-toDateString-Date-prototype-toTimeString" class="headerlink" title="Date.prototype.toDateString() / Date.prototype.toTimeString()"></a>Date.prototype.toDateString() / Date.prototype.toTimeString()</h2><ul>
+<li>사람이 읽을 수 있는 형식의 문자열로 날짜 / 시간을 반환한다.</li>
+<li>var d = new Date(‘1988/8/17/13:30’);</li>
+<li>console.log(d.toDateString()); // Sat Sep 17 1988</li>
+</ul>
+<hr>
+<h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><ul>
+<li>기본자료형 String을 위한 wrapper 객체이다.</li>
+<li>기본자료형으로 프로퍼티나 메소드를 호출할 때 기본자료형과 연관된 wrapper 객체로 일시적으로 변환되어 프로토타입 객체를 공유하기 때문에 기본자료형이 wrppaer 객체 메소드를 사용할 수 있다.</li>
+</ul>
+<h1 id="String-Constructor"><a href="#String-Constructor" class="headerlink" title="String Constructor"></a>String Constructor</h1><ul>
+<li>new String(value)</li>
+<li>new 연산자를 사용하지 않고 String() 생성자 함수를 호출하면 String 객체가 아닌 문자열 리터럴을 반환한다.</li>
+<li>new없이 String() 생성자 함수를 호출했을 때는 string 이 된다.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="string">'Lee'</span>;</span><br><span class="line"><span class="keyword">var</span> y = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'Lee'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(x == y);  <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(x === y); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> x); <span class="comment">// string</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> y); <span class="comment">// object</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="String-Property"><a href="#String-Property" class="headerlink" title="String Property"></a>String Property</h1><h2 id="String-length"><a href="#String-length" class="headerlink" title="String.length"></a>String.length</h2><ul>
+<li>문자열 내의 문자 갯수를 반환한다.</li>
+</ul>
+<h1 id="String-Method"><a href="#String-Method" class="headerlink" title="String Method"></a>String Method</h1><h2 id="String-prototype-charAt"><a href="#String-prototype-charAt" class="headerlink" title="String.prototype.charAt()"></a>String.prototype.charAt()</h2><ul>
+<li>매개변수로 전달한 index 위치의 문자를 반환한다.</li>
+</ul>
+<h2 id="String-prototype-indexOf"><a href="#String-prototype-indexOf" class="headerlink" title="String.prototype.indexOf()"></a>String.prototype.indexOf()</h2><ul>
+<li>매개변수로 전달된 문자나 문자열을 처음 발견한 곳의 index를 반환한다. </li>
+<li>발견하지 못한 경우 -1을 반환한다.</li>
+</ul>
+<h2 id="String-prototype-lastIndexOf"><a href="#String-prototype-lastIndexOf" class="headerlink" title="String.prototype.lastIndexOf()"></a>String.prototype.lastIndexOf()</h2><ul>
+<li>매개변수로 전달된 문자나 문자열을 마지막으로 발견된 곳의 index를 반환한다.</li>
+<li><p>2번째 매개변수가 전달되면 해당 위치로 이동한 후, 역방향으로 검색을 시작하고 indexOf() 메소드 처럼 문자열을 처음 발견한 곳의 index를 반환한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'Hello World'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.lastIndexOf(<span class="string">'l'</span>, <span class="number">10</span>)); <span class="comment">// 9</span></span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## String.prototype.replace()</span></span><br><span class="line"><span class="string">- 첫번째 인자의 값을 두번째 인자에 전달된 문자열로 대체한다.</span></span><br><span class="line"><span class="string">- 검색된 문자열이 복수로 존재할 경우, 첫번째 문자열만 대체된다.</span></span><br><span class="line"><span class="string">- 원본 문자열은 변경되지 않고 새로운 문자열을 반환한다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## String.prototype.split()</span></span><br><span class="line"><span class="string">- 첫번째 인자의 문자열로 구분하여 분리된 각 문자열로 이루어진 배열을 반환한다.</span></span><br><span class="line"><span class="string">- 전달된 인수가 없는 경우, 문자열 전체를 단일 요소로 하는 배열을 반환한다.</span></span><br><span class="line"><span class="string">- 원본 문자열은 변경되지 않는다.</span></span><br><span class="line"><span class="string">- splitStr = str.split(' ', 3); // 공백으로 구분하여 배열로 반환, 3개까지만 허용</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## String.prototype.substring()</span></span><br><span class="line"><span class="string">- substring(시작index, 종료index-1)</span></span><br><span class="line"><span class="string">- 첫번째 인자의 index에 있는 문자부터 두번째 인자의 index에 있는 문자의 바로 이전 문자까지를 반환한다.</span></span><br><span class="line"><span class="string">- 첫번째 인수 &gt; 두번째 인수 : 두 인수는 교환된다.</span></span><br><span class="line"><span class="string">- 두번째 인수가 생략된 경우 : 해당 문자열의 끝까지 반환한다.</span></span><br><span class="line"><span class="string">- 인수 &lt; 0 또는 NaN인 경우 : 0으로 취급된다.</span></span><br><span class="line"><span class="string">- 인수 &gt; 문자열의 길이(str.length) : 인수는 문자열의 길이(str.length)으로 취급된다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## String.prototype.substr()</span></span><br><span class="line"><span class="string">- substr(시작index, 길이)</span></span><br><span class="line"><span class="string">- var str = 'Hello'; var res = str.substr(3,2); // lo</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## String.prototype.toLowerCase()</span></span><br><span class="line"><span class="string">- 문자열의 문자를 모두 소문자로 변경한다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## String.prototype.toUpperCase()</span></span><br><span class="line"><span class="string">- 문자열의 문자를 모두 대문자로 변경한다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## String.prototype.trim()</span></span><br><span class="line"><span class="string">- 문자열 양쪽 끝에 있는 공백 문자를 제거한 문자열을 반환한다.</span></span><br><span class="line"><span class="string">- 문자 사이의 공백은 제거하지 못한다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">---</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 실행 컨텍스트(Execution Context)</span></span><br><span class="line"><span class="string">- 실행 가능한 코드가 실행되는 환경이다.</span></span><br><span class="line"><span class="string">- 실행 가능한 코드 : 전역코드, Eval코드(안씀), 함수코드(호출)</span></span><br><span class="line"><span class="string">- 변수와 함수가 호출되기 위한 환경이 만들어진다.</span></span><br><span class="line"><span class="string">- 자바스크립트 엔진은 코드를 실행하기 위해 실행에 필요한 정보를 알고 있으며, 실행 컨텍스트를 물리적 객체의 형태로 관리한다.</span></span><br><span class="line"><span class="string">- 실행에 필요한 정보 : 변수(객체의 프로퍼티, 전역변수, 지역변수, 매개변수), 함수선언(함수명, 함수), 변수의 유효범위(전역이냐 지역이냐), this(가리키고 있는 객체)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 실행 컨텍스트 스택(=콜 스택)</span></span><br><span class="line"><span class="string">- 실행 컨텍스트가 생성되서 쌓이는 영역</span></span><br><span class="line"><span class="string">- 전역 실행 컨텍스트, 함수 실행 컨텍스트가 생성되면 실행 컨텍스트 스택에 쌓인다.</span></span><br><span class="line"><span class="string">- 함수를 호출하면 해당 함수의 실행 컨텍스트가 생성되며, 함수가 끝나면 해당 함수의 실행 컨텍스트가 사라진다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 실행 컨텍스트 3가지 객체</span></span><br><span class="line"><span class="string">- Variable Object(VO), Scope Chain(SC), this value</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">1. Variable Object</span></span><br><span class="line"><span class="string">- 변수(함수표현식 포함), 매개변수와 인수, 함수선언의 정보를 담는 객체로 유일하며 최상위에 위치한 객체이다.</span></span><br><span class="line"><span class="string">- 전역 컨텍스트의 VO는 전역객체(GO)를 가리키고, 함수 컨텍스트의 VO는 활성객체(AO)를 가리킨다.</span></span><br><span class="line"><span class="string">- 전역 객체(GO)는 전역에 선언된 전역 변수, 전역 함수를 프로퍼티로 소유한다.</span></span><br><span class="line"><span class="string">- 활성 객체(AO)는 매개변수와 인수들의 정보를 배열의 형태로 담고 있는 arguments객체가 추가된다.</span></span><br><span class="line"><span class="string">- 전역 객체(Global Object)는 1개 생성, 활성객체(Activation Object)는 여러개 생성이 가능하다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">2. Scope Chain</span></span><br><span class="line"><span class="string">- 스코프 체인은 일종의 리스트로서 중첩된 함수의 레퍼런스를 저장하고 있다.</span></span><br><span class="line"><span class="string">- 마지막 리스트는 항상 전역 객체(GO)를 가리킨다.</span></span><br><span class="line"><span class="string">- 함수 실행 컨텍스트의 스코프 체인의 경우, 레퍼런스로 자기 자신의 AO와 GO를 가리킨다.</span></span><br><span class="line"><span class="string">- 스코프 체인(리스트)을 검색하면 함수가 중첩 상태일 때, 하위함수 내에서 상위함수의 유효 범위까지 참조할 수 있게 된다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">3. this value</span></span><br><span class="line"><span class="string">- this의 값이 할당된다.</span></span><br><span class="line"><span class="string">- 함수 호출 패턴에 의해 결정된다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## 전역 코드에의 진입</span></span><br><span class="line"><span class="string">1. 전역 객체 생성</span></span><br><span class="line"><span class="string">- 컨트롤이 실행 컨텍스트에 접근하기 이전에 유일한 전역 객체(Global Object)가 생성된다.</span></span><br><span class="line"><span class="string">- 전역 객체에는 빌트인 객체와 BOM, DOM이 설정되어 있다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">2. 실행 컨텍스트 생성 후 스택</span></span><br><span class="line"><span class="string">- 전역 코드로 컨트롤이 진입하면 실행 컨텍스트가 생성된 후, 실행 컨텍스트 스택에 쌓인다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">3. 스코프 체인(SC)의 생성과 초기화</span></span><br><span class="line"><span class="string">- 전역 객체의 레퍼런스를 포함하는 리스트가 된다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">4. Variable Instantiation(변수 객체화) 실행</span></span><br><span class="line"><span class="string">- Variable Instantiation은 VO에 프로퍼티와 값을 추가하는 것이다.</span></span><br><span class="line"><span class="string">- 변수, 매개변수, 인수정보(arguments), 함수선언을 VO에 추가하여 객체화한다.</span></span><br><span class="line"><span class="string">- 함수부터 변수 순으로 저장된다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">4-1. "변수 객체화의 순서"</span></span><br><span class="line"><span class="string">- 1. Function일 경우 매개변수(parameter)가 VO의 프로퍼티로, 인수(arguments)가 값으로 설정된다.</span></span><br><span class="line"><span class="string">- 2. 함수선언(함수표현식 제외)을 대상으로 함수명이 VO(VO가 가리키고 있는 객체)프로퍼티로, 생성된 함수 객체가 값으로 설정된다.(함수 호이스팅)</span></span><br><span class="line"><span class="string">- 3. 변수 선언을 대상으로 변수명이 VO(VO가 가리키고 있는 객체)의 프로퍼티로, undefined가 값으로 설정된다.(변수 호이스팅)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">5. 함수의 선언 처리(함수가 있다면)</span></span><br><span class="line"><span class="string">- 변수 객체화의 순서 2번처럼 함수명이 프로퍼티로, 생성된 함숫 객체(몸체)가 값으로 설정된다.(전역 함수일 경우 GO에 설정)</span></span><br><span class="line"><span class="string">- 생성된 함수 객체는 [[Scope]] 프로퍼티를 가지게 된다.</span></span><br><span class="line"><span class="string">- (함수 호출 실행 이전)[[Scope]]는 현재 실행 컨텍스트의 스코프 체인이 참조하고 있는 객체를 값으로 설정하고, (함수 실행 후)스코프 체인이 가리키는 변수 객체에 이미 함수가 등록되어 있으므로 함수선언식 이전에 함수를 호출할 수 있다. (함수 호이스팅)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">6. 변수의 선언 처리(변수가 있을때)</span></span><br><span class="line"><span class="string">- 변수 객체화의 순서 3번처럼 변수명이 VO(VO가 가리키고 있는 객체)의 프로퍼티로, undefined가 값으로 설정된다.</span></span><br><span class="line"><span class="string">- var 키워드로 선언된 변수는 선언과 초기화 단계가 한번에 이루어진다.</span></span><br><span class="line"><span class="string">- 변수 선언문 이전에 접근해도 VO에 변수가 undefined로 초기화된 상태로 존재하기 때문에 에러가 나지 않는다.(변수 호이스팅)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">7. this value의 결정</span></span><br><span class="line"><span class="string">- this value가 결정되기 이전에 this는 전역 객체를 가리키고 있다가 함수 호출 패턴에 의해 this에 할당되는 값이 결정된다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## 전역 코드의 실행</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">1. 변수값 할당</span></span><br><span class="line"><span class="string">- 변수값을 할당할 때는 VO(VO가 가리키고 있는 객체, 전역의 경우 GO)를 선두(0)부터 검색하여 해당 변수의 프로퍼티를 발견하면 값을 할당 한다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">2. 함수 실행</span></span><br><span class="line"><span class="string">- 함수가 실행되면 새로운 함수 실행 컨텍스트가 생성된다.</span></span><br><span class="line"><span class="string">- 해당 함수로 실행 컨텍스트의 컨트롤이 이동하면 전역 코드와 마찬가지로  1. 스코프 체인의 생성과 초기화, 2. Variable Instantiation 실행, 3. this value 결정이 순서대로 실행된다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## 함수 코드에의 진입</span></span><br><span class="line"><span class="string">- 전역 코드에의 진입과 순서는 같지만 다른 룰이 적용된다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">1. 스코프 체인의 생성과 초기화</span></span><br><span class="line"><span class="string">- Activation Object생성**</span></span><br><span class="line"><span class="string">- AO에 대한 레퍼런스를 스코프 체인의 선두에 설정한다.</span></span><br><span class="line"><span class="string">- Activation Object는 arguments 프로퍼티를 초기화한다.</span></span><br><span class="line"><span class="string">- 스코프 체인의 마지막 레퍼런스 객체는 전역 객체를 참조한다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">2. Variable Instantiation 실행</span></span><br><span class="line"><span class="string">- 함수 객체와 변수를 VO에 바인딩한다.(선언, 초기화)</span></span><br><span class="line"><span class="string">- 변수의 프로퍼티는 변수명, 값은 undefined로 VO에 저장한다.</span></span><br><span class="line"><span class="string">- 함수의 프로퍼티는 함수명, 값은 Function Object로 VO에 저장한다.</span></span><br><span class="line"><span class="string">- Function Object의 [[scope]] 프로퍼티가 생성된다. </span></span><br><span class="line"><span class="string">- [[scope]] 프로퍼티는 AO와 전역을 참조하는 리스트의 값을 갖는다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">3. this value 결정</span></span><br><span class="line"><span class="string">- this에 할당되는 값은 함수 호출 패턴에 의해 결정된다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## 함수 코드의 실행(함수에 변수가 존재할때)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">1. 변수 값의 할당</span></span><br><span class="line"><span class="string">- 지역변수를 할당할 때(현재는 내부함수일 경우), 스코프 체인이 참조하고 있는 VO를 선두(0)부터 검색하여 변수명에 해당하는 프로퍼티가 발견되면 값을 할당한다. (해당 영역에도 없으면 스코프 체인 리스트를 참조하여 GO를 검색하도록 한다.)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## 내부 함수 코드의 실행</span></span><br><span class="line"><span class="string">- 내부 함수가 실행되기 시작하면 새로운 실행 컨텍스트가 생성된다.</span></span><br><span class="line"><span class="string">- 여기서도  1. 스코프 체인의 생성과 초기화, 2. Variable Instantiation 실행, 3. this value 결정이 순서대로 진행된다.</span></span><br><span class="line"><span class="string">---</span></span><br><span class="line"><span class="string"># 클로저(closure)</span></span><br><span class="line"><span class="string">- 내부함수가 참조하는 외부함수의 지역변수가 외부함수에 의해 내부함수가 반환된 이후에도 life-cycle이 유지되는 것을 의미한다.</span></span><br><span class="line"><span class="string">- 외부함수가 내부함수보다 더 오래 유지되는 경우에 내부함수가 외부함수의 지역변수에 접근할 수 있고 외부함수는 외부함수의 지역변수를 사용하는 내부함수가 소멸될 때까지 소멸되지 못하고 상태가 유지되며 내부함수에 의해 소멸하게 되는 특성을 말한다.</span></span><br><span class="line"><span class="string">- 클로저에 의해 참조되는 외부함수의 변수를 자유변수(Free variable)이라고 부른다.</span></span><br><span class="line"><span class="string">- (실행 컨텍스트 관점에서)내부함수가 유효한 경우에 외부함수가 종료 되면 함수의 실행 컨텍스트도 소멸하지만, 함수 실행 컨텍스트의 AO는 유효하기 때문에 내부함수가 스코프 체인을 통해 참조할 수 있다. </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 클로저의 활용</span></span><br><span class="line"><span class="string">- 성능적인 면과 자원적인 면에서 손해를 볼 수 있다.</span></span><br><span class="line"><span class="string">- (실행 컨텍스트에서) 클로저로 참조하는 변수는 프로그램 종료 시까지 계속 메모리에 할당되어 있기 때문에 성능 상 좋다고 할 수 없다.(최소화하며 오남용하지 않아야 한다.)</span></span><br></pre></td></tr></table></figure>
+<button type="button" onclick="myFunction()">Count!</button>
+
+<p id="demo">0</p>
+
+<p><script><br>  var add = (function () {</p>
+<pre><code>var counter = 0;
+return function () {
+  return ++counter;
+};
+</code></pre><p>  }());</p>
+<p>  function myFunction() {</p>
+<pre><code>document.getElementById(&apos;demo&apos;).innerHTML = add();
+</code></pre><p>  }<br></script><br>```</p>
+</li>
+<li>전역 변수의 사용 억제를 위한 방식</li>
+<li>즉시 실행함수는 한번만 실행되므로 counter가 다시 초기화되지 않는다.</li>
+<li>외부함수의 변수 counter는 참조하는 함수(내부함수)가 소멸될때까지 유지된다.</li>
+<li>counter는 외부에서 접근할 수 없는 private 변수이다.</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/01/TIL-1001/" rel="next" title="한 주간 배운 내용 Summary">
+                <i class="fa fa-chevron-left"></i> 한 주간 배운 내용 Summary
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/10/TIL-1010/" rel="prev" title="빌트인객체-1">
+                빌트인객체-1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2017/10/02/TIL-1002/"
+           data-title="한 주간 배운 내용 Summary2" data-url="http://mkfdev.github.io/2017/10/02/TIL-1002/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Min Kyung</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/mkfdev" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#map-filter-reduce"><span class="nav-number">1.</span> <span class="nav-text"><a href="#map-filter-reduce" class="headerlink" title="map, filter, reduce*"></a>map, filter, reduce<strong>*</strong></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-some"><span class="nav-number">2.</span> <span class="nav-text"><a href="#Array-prototype-some" class="headerlink" title="Array.prototype.some()"></a>Array.prototype.some()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Number"><span class="nav-number"></span> <span class="nav-text"><a href="#Number" class="headerlink" title="Number"></a>Number</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Number-Constructor"><span class="nav-number"></span> <span class="nav-text"><a href="#Number-Constructor" class="headerlink" title="Number Constructor"></a>Number Constructor</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Number-Property"><span class="nav-number"></span> <span class="nav-text"><a href="#Number-Property" class="headerlink" title="Number Property"></a>Number Property</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Number-MAX-VALUE"><span class="nav-number"></span> <span class="nav-text"><a href="#Number-MAX-VALUE" class="headerlink" title="Number.MAX_VALUE"></a>Number.MAX_VALUE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number-MIN-VALUE"><span class="nav-number"></span> <span class="nav-text"><a href="#Number-MIN-VALUE" class="headerlink" title="Number.MIN_VALUE"></a>Number.MIN_VALUE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number-POSITIVE-INFINITY"><span class="nav-number"></span> <span class="nav-text"><a href="#Number-POSITIVE-INFINITY" class="headerlink" title="Number.POSITIVE_INFINITY"></a>Number.POSITIVE_INFINITY</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number-NEGATIVE-INFINITY"><span class="nav-number"></span> <span class="nav-text"><a href="#Number-NEGATIVE-INFINITY" class="headerlink" title="Number.NEGATIVE_INFINITY"></a>Number.NEGATIVE_INFINITY</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number-NaN"><span class="nav-number"></span> <span class="nav-text"><a href="#Number-NaN" class="headerlink" title="Number.NaN"></a>Number.NaN</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Number-Method"><span class="nav-number"></span> <span class="nav-text"><a href="#Number-Method" class="headerlink" title="Number Method"></a>Number Method</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Number-isFinite-value"><span class="nav-number"></span> <span class="nav-text"><a href="#Number-isFinite-value" class="headerlink" title="Number.isFinite(value)"></a>Number.isFinite(value)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number-isInteger-value"><span class="nav-number"></span> <span class="nav-text"><a href="#Number-isInteger-value" class="headerlink" title="Number.isInteger(value)"></a>Number.isInteger(value)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number-isNaN-value"><span class="nav-number"></span> <span class="nav-text"><a href="#Number-isNaN-value" class="headerlink" title="Number.isNaN(value)"></a>Number.isNaN(value)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number-isSafeInteger"><span class="nav-number"></span> <span class="nav-text"><a href="#Number-isSafeInteger" class="headerlink" title="Number.isSafeInteger()"></a>Number.isSafeInteger()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number-prototype-toExponential"><span class="nav-number"></span> <span class="nav-text"><a href="#Number-prototype-toExponential" class="headerlink" title="Number.prototype.toExponential()"></a>Number.prototype.toExponential()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number-prototype-toFixed"><span class="nav-number"></span> <span class="nav-text"><a href="#Number-prototype-toFixed" class="headerlink" title="Number.prototype.toFixed()"></a>Number.prototype.toFixed()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number-prototype-toPrecision"><span class="nav-number"></span> <span class="nav-text"><a href="#Number-prototype-toPrecision" class="headerlink" title="Number.prototype.toPrecision()"></a>Number.prototype.toPrecision()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number-prototype-toString"><span class="nav-number"></span> <span class="nav-text"><a href="#Number-prototype-toString" class="headerlink" title="Number.prototype.toString()"></a>Number.prototype.toString()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Math"><span class="nav-number"></span> <span class="nav-text"><a href="#Math" class="headerlink" title="Math"></a>Math</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Math-Property"><span class="nav-number"></span> <span class="nav-text"><a href="#Math-Property" class="headerlink" title="Math Property"></a>Math Property</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Math-PI"><span class="nav-number"></span> <span class="nav-text"><a href="#Math-PI" class="headerlink" title="Math.PI"></a>Math.PI</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Math-Method"><span class="nav-number"></span> <span class="nav-text"><a href="#Math-Method" class="headerlink" title="Math Method"></a>Math Method</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Math-abs"><span class="nav-number"></span> <span class="nav-text"><a href="#Math-abs" class="headerlink" title="Math.abs()"></a>Math.abs()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Math-round"><span class="nav-number"></span> <span class="nav-text"><a href="#Math-round" class="headerlink" title="Math.round()"></a>Math.round()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Math-sqrt"><span class="nav-number"></span> <span class="nav-text"><a href="#Math-sqrt" class="headerlink" title="Math.sqrt()"></a>Math.sqrt()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Math-ceil"><span class="nav-number"></span> <span class="nav-text"><a href="#Math-ceil" class="headerlink" title="Math.ceil()"></a>Math.ceil()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Math-floor"><span class="nav-number"></span> <span class="nav-text"><a href="#Math-floor" class="headerlink" title="Math.floor()"></a>Math.floor()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Math-random"><span class="nav-number"></span> <span class="nav-text"><a href="#Math-random" class="headerlink" title="Math.random()"></a>Math.random()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Math-pow"><span class="nav-number"></span> <span class="nav-text"><a href="#Math-pow" class="headerlink" title="Math.pow()"></a>Math.pow()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Math-max"><span class="nav-number"></span> <span class="nav-text"><a href="#Math-max" class="headerlink" title="Math.max()"></a>Math.max()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Math-min"><span class="nav-number"></span> <span class="nav-text"><a href="#Math-min" class="headerlink" title="Math.min()"></a>Math.min()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Date"><span class="nav-number"></span> <span class="nav-text"><a href="#Date" class="headerlink" title="Date"></a>Date</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Date의-Constructor"><span class="nav-number"></span> <span class="nav-text"><a href="#Date&#xC758;-Constructor" class="headerlink" title="Date&#xC758; Constructor"></a>Date&#xC758; Constructor</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#new-Date"><span class="nav-number"></span> <span class="nav-text"><a href="#new-Date" class="headerlink" title="new Date()"></a>new Date()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new-Date-milliseconds"><span class="nav-number"></span> <span class="nav-text"><a href="#new-Date-milliseconds" class="headerlink" title="new Date(milliseconds)"></a>new Date(milliseconds)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new-Date-dateString"><span class="nav-number"></span> <span class="nav-text"><a href="#new-Date-dateString" class="headerlink" title="new Date(dateString)"></a>new Date(dateString)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new-Date-year-month-day-hour-minute-second-millisecond"><span class="nav-number"></span> <span class="nav-text"><a href="#new-Date-year-month-day-hour-minute-second-millisecond" class="headerlink" title="new Date(year, month[, day, hour, minute, second, millisecond])"></a>new Date(year, month[, day, hour, minute, second, millisecond])</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Date-Method"><span class="nav-number"></span> <span class="nav-text"><a href="#Date-Method" class="headerlink" title="Date Method"></a>Date Method</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Date-now"><span class="nav-number"></span> <span class="nav-text"><a href="#Date-now" class="headerlink" title="Date.now()"></a>Date.now()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Date-parse"><span class="nav-number"></span> <span class="nav-text"><a href="#Date-parse" class="headerlink" title="Date.parse()"></a>Date.parse()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Date-UTC"><span class="nav-number"></span> <span class="nav-text"><a href="#Date-UTC" class="headerlink" title="Date.UTC()"></a>Date.UTC()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Date-prototype-getFullYear-getMonth-getDate-getDay-getHours-getMinutes-getSeconds-getMilliseconds-getTime"><span class="nav-number"></span> <span class="nav-text"><a href="#Date-prototype-getFullYear-getMonth-getDate-getDay-getHours-getMinutes-getSeconds-getMilliseconds-getTime" class="headerlink" title="Date.prototype.getFullYear() / getMonth() / getDate() / getDay() / getHours() / getMinutes() / getSeconds() / getMilliseconds() / getTime()"></a>Date.prototype.getFullYear() / getMonth() / getDate() / getDay() / getHours() / getMinutes() / getSeconds() / getMilliseconds() / getTime()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Date-prototype-setFullYear-setMonth-setDate-setDay-setHours-setMinutes-setSeconds-setMilliseconds-setTime"><span class="nav-number"></span> <span class="nav-text"><a href="#Date-prototype-setFullYear-setMonth-setDate-setDay-setHours-setMinutes-setSeconds-setMilliseconds-setTime" class="headerlink" title="Date.prototype.setFullYear() / setMonth() / setDate() / setDay() / setHours() / setMinutes() / setSeconds() / setMilliseconds() / setTime()"></a>Date.prototype.setFullYear() / setMonth() / setDate() / setDay() / setHours() / setMinutes() / setSeconds() / setMilliseconds() / setTime()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Date-prototype-getTimezoneOffset"><span class="nav-number"></span> <span class="nav-text"><a href="#Date-prototype-getTimezoneOffset" class="headerlink" title="Date.prototype.getTimezoneOffset()"></a>Date.prototype.getTimezoneOffset()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Date-prototype-toDateString-Date-prototype-toTimeString"><span class="nav-number"></span> <span class="nav-text"><a href="#Date-prototype-toDateString-Date-prototype-toTimeString" class="headerlink" title="Date.prototype.toDateString() / Date.prototype.toTimeString()"></a>Date.prototype.toDateString() / Date.prototype.toTimeString()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#String"><span class="nav-number"></span> <span class="nav-text"><a href="#String" class="headerlink" title="String"></a>String</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#String-Constructor"><span class="nav-number"></span> <span class="nav-text"><a href="#String-Constructor" class="headerlink" title="String Constructor"></a>String Constructor</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#String-Property"><span class="nav-number"></span> <span class="nav-text"><a href="#String-Property" class="headerlink" title="String Property"></a>String Property</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#String-length"><span class="nav-number"></span> <span class="nav-text"><a href="#String-length" class="headerlink" title="String.length"></a>String.length</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#String-Method"><span class="nav-number"></span> <span class="nav-text"><a href="#String-Method" class="headerlink" title="String Method"></a>String Method</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#String-prototype-charAt"><span class="nav-number"></span> <span class="nav-text"><a href="#String-prototype-charAt" class="headerlink" title="String.prototype.charAt()"></a>String.prototype.charAt()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-prototype-indexOf"><span class="nav-number"></span> <span class="nav-text"><a href="#String-prototype-indexOf" class="headerlink" title="String.prototype.indexOf()"></a>String.prototype.indexOf()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-prototype-lastIndexOf"><span class="nav-number"></span> <span class="nav-text"><a href="#String-prototype-lastIndexOf" class="headerlink" title="String.prototype.lastIndexOf()"></a>String.prototype.lastIndexOf()</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Min Kyung</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
