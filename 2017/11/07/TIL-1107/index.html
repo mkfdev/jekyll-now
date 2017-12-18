@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="angular2, typescript, framework," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Angular 기본 개념 및 구성 정리Angular소개 “Web Component”를 기반으로 프레임워크가 만들어짐 SPA(Single Page Application)개발을 위한 구글의 오픈소스 자바스크립트 프레임워크   초기 로딩이 길다(SPA의 단점) 초기 로딩 이후의 화면전환이나 인터렉션은 빠르다. AngularJS(v1,ES5) 2012년 구글의 미">
+<meta name="keywords" content="angular2, typescript, framework">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular2 기본 개념과 구성">
+<meta property="og:url" content="http://mkfdev.github.io/2017/11/07/TIL-1107/index.html">
+<meta property="og:site_name" content="FRONT.DEV.MK">
+<meta property="og:description" content="Angular 기본 개념 및 구성 정리Angular소개 “Web Component”를 기반으로 프레임워크가 만들어짐 SPA(Single Page Application)개발을 위한 구글의 오픈소스 자바스크립트 프레임워크   초기 로딩이 길다(SPA의 단점) 초기 로딩 이후의 화면전환이나 인터렉션은 빠르다. AngularJS(v1,ES5) 2012년 구글의 미">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-12-18T04:20:50.926Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angular2 기본 개념과 구성">
+<meta name="twitter:description" content="Angular 기본 개념 및 구성 정리Angular소개 “Web Component”를 기반으로 프레임워크가 만들어짐 SPA(Single Page Application)개발을 위한 구글의 오픈소스 자바스크립트 프레임워크   초기 로딩이 길다(SPA의 단점) 초기 로딩 이후의 화면전환이나 인터렉션은 빠르다. AngularJS(v1,ES5) 2012년 구글의 미">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mkfdev.github.io/2017/11/07/TIL-1107/"/>
+
+
+
+
+
+  <title>Angular2 기본 개념과 구성 | FRONT.DEV.MK</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FRONT.DEV.MK</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mkfdev.github.io/2017/11/07/TIL-1107/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Min Kyung">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FRONT.DEV.MK">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Angular2 기본 개념과 구성</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-07T19:19:30+09:00">
+                2017-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/TIL/" itemprop="url" rel="index">
+                    <span itemprop="name">TIL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/07/TIL-1107/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/11/07/TIL-1107/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Angular-기본-개념-및-구성-정리"><a href="#Angular-기본-개념-및-구성-정리" class="headerlink" title="Angular 기본 개념 및 구성 정리"></a>Angular 기본 개념 및 구성 정리</h2><h3 id="Angular소개"><a href="#Angular소개" class="headerlink" title="Angular소개"></a>Angular소개</h3><ul>
+<li>“Web Component”를 기반으로 프레임워크가 만들어짐</li>
+<li>SPA(Single Page Application)개발을 위한 구글의 오픈소스 자바스크립트 프레임워크  </li>
+<li>초기 로딩이 길다(SPA의 단점)</li>
+<li>초기 로딩 이후의 화면전환이나 인터렉션은 빠르다.</li>
+<li>AngularJS(v1,ES5) 2012년 구글의 미스코 헤브리가 공개. 지속적으로 업데이트를 진행하고 있다.</li>
+<li>Angular(v2~, typescriprt) 2014년 ng컨퍼런스에서 처음으로 소개.</li>
+<li>Angular는 AngularJS의 후속 버전이지만 호환성이 없다.</li>
+<li>Angular에서는 자바스크립트 값이 html과 상호 연동된다.</li>
+<li>하나 이상의 모듈과 컴포넌트가 존재해야 된다.</li>
+<li>대부분의 모던 브라우저를 지원한다.(IE는 9이상)</li>
+</ul>
+<h3 id="Angular의-장점"><a href="#Angular의-장점" class="headerlink" title="Angular의 장점"></a>Angular의 장점</h3><p>1) 개선된 개발 생산성<br>    1) 컴포넌트 기반 개발<br>    2) Typescript의 도입</p>
+<pre><code>- Typescript의 정적 타이핑/ ECMAScript6의 클래스,모듈/ ECMAScript7의 데코레이터를 지원한다.
+3) 개발 도구의 통합 및 개발 환경 구축 자동화
+- 설정해야 할 도구가 많고 설정 방법은 익숙지 않다. =&gt; Angular는 CLI을 통해 간편한 개발 환경 구축을 지원한다.(개발환경 구축에 소요되는 시간 최소화)
+</code></pre><p>2) 성능 향상<br>    1) Digest Loop로 인한 성능저하 문제의 해결</p>
+<pre><code>- AngularJS는 Model의 변화를 View에 반영시키는 과정(Digest Loog)로 인한 성능저하가 단점 (양방향 바인딩을 위해서는 watcher가 추가됨, watcher가 늘어날수록 성능 저하)
+2) AoT 컴파일
+- 사전 컴파일 방식을 의미. 런타임에서 실시하지 않고 사전에 컴파일하여 속도를 향상시키는 기법.
+3) Lazy Loading
+- 지연 로딩. SPA의 단점을 극복하기 위한 대안.
+- 애플리케이션 실행 시점에 모든 모듈을 한꺼번에 로딩하지 않고 필요한 시점에 필요한 모듈만을 로딩하는 방식
+4) 코드 최적화
+</code></pre><a id="more"></a>
+<h3 id="Angular-CLI"><a href="#Angular-CLI" class="headerlink" title="Angular CLI"></a>Angular CLI</h3><ul>
+<li><p>간단한 명령어를 사용하여 Angular 프로젝트 스캐폴딩(scaffolding)을 생성, 실행, 빌드할 수 있으며 다양한 구성 요소를 선별적으로 추가할 수 있는 커맨드-라인 인터페이스이다.</p>
+</li>
+<li><p>Angular 프로젝트 스캐폴딩을 간단한 명령어로 생성해 주어 개발환경 구축에 소요되는 시간을 최소화할 뿐 아니라 표준적인 스타일 가이드를 제공한다.</p>
+</li>
+</ul>
+<h4 id="여기서-스캐폴딩-scaffolding-이란…"><a href="#여기서-스캐폴딩-scaffolding-이란…" class="headerlink" title="여기서, 스캐폴딩(scaffolding)이란…"></a>여기서, 스캐폴딩(scaffolding)이란…</h4><ul>
+<li>(건축 공사장의) 비계?</li>
+<li>높은 곳에서 공사를 할 수 있도록 임시로 설치한 가설물을 비계라고 한다.</li>
+<li>개발에서는 스캐폴딩을 개발을 시작하기 위해 여러 폴더를 만들고, 라이브러리를 다운받고, 기본적인 뼈대를 만들면서 시작을 하며 이러한 작업을 몇줄의 명령어로 끝마치는 것! 이라고 한다.</li>
+</ul>
+<h3 id="Angular-CLI-사용법"><a href="#Angular-CLI-사용법" class="headerlink" title="Angular CLI 사용법"></a>Angular CLI 사용법</h3><p>1) 설치 </p>
+<ul>
+<li>npm install -g @angular/cli</li>
+<li>node.js 6.9.0 / npm 3.0.0 이상</li>
+</ul>
+<p>2) Angular 프로젝트 생성</p>
+<ul>
+<li>ng new <project-name></project-name></li>
+<li>새로운 프로젝트 폴더가 생성되고 스캐폴딩(프로젝트 기본 골격)이 작성된다.</li>
+</ul>
+<p>3) 프로젝트 실행</p>
+<ul>
+<li>ng serve</li>
+<li>ng serve –open(or -o)</li>
+<li>ng serve –port(or -p) 4201</li>
+<li>serve =&gt; webpack을 사용하여 소스코드와 의존 모듈을 번들링하고 Angular CLI가 내장하고 있는 개발용 서버를 실행한다.</li>
+<li>개발용 서버는 코드의 변경을 감지하여 자동으로 브라우저를 리로드하는 LiveReload기능을 제공한다.(–open명령어)</li>
+<li>locahost:4200으로 접속한다.</li>
+<li>4200번을 이미 사용하고 있다면 예)4201로 변경해준다.</li>
+</ul>
+<h3 id="프로젝트-구성요소"><a href="#프로젝트-구성요소" class="headerlink" title="프로젝트 구성요소"></a>프로젝트 구성요소</h3><p>1) Component(컴포넌트) </p>
+<ul>
+<li>화면 전환 단위로 만드는 것이 좋다.</li>
+<li>모든 구성요소는 컴퓨넌트를 중심으로 구성된다.</li>
+<li><p>애플리케이션의 화면을 구성하는 뷰를 생성하고 관리한다.</p>
+<p>  1) 컴포넌트 요소 추가 명령어</p>
+<ul>
+<li>ng g(enerate) c(omponent) component-name</li>
+<li>파일명(구성 요소 명칭)은 하이픈으로 구별된 케밥표기법을 사용한다.</li>
+<li>명령어를 실행하면, src/app/<component-name>폴더를 생성</component-name></li>
+<li>src/app/<componene-name>폴더에 4개의 파일을 추가한다.</componene-name></li>
+<li>4개의 파일 : 컴포넌트 HTML템플릿을 위한 HTML파일, 컴포넌트 HTML템플릿의 스타일링을 위한 CSS파일, 컴포넌트 유닛 테스트를 위한 스펙 파일, 컴포넌트 클래스 파일(ts)</li>
+<li><p>루트 모듈 src/app/app.module.ts에 새롭게 추가된 컴포넌트를 등록한다.</p>
+<p>2) 컴포넌트 요소 추가(인라인) 명령어</p>
+</li>
+<li>ng g c about -it -is -spec false</li>
+<li>it(inline templete)</li>
+<li>is(inline style)</li>
+<li><p>spec false(spec 테스트 파일 안만듦)</p>
+<p>3) 서비스 요소 추가(sepc 테스트 파일 안만듦) 명령어</p>
+</li>
+<li><p>ng g c service -it -is -spec false -flat</p>
+<p>4) Selector 프로퍼티 값</p>
+</li>
+<li>컴포넌트를 마크업으로 표현할 때 사용하는 이름.</li>
+<li>루트 컴포넌트에서 home 컴포넌트를 사용하려면, app.component.html을 아래처럼 수정한다.</li>
+<li>ex) Selector:’app-home’ =&gt; <app-home></app-home></li>
+<li>기본 접두사는 angular-cli.json에서 설정할 수 있다. </li>
+</ul>
+</li>
+</ul>
+<h4 id="참고-anular-cli-json-설정파일"><a href="#참고-anular-cli-json-설정파일" class="headerlink" title="참고) anular-cli.json 설정파일"></a>참고) anular-cli.json 설정파일</h4><ul>
+<li>selector 접두사 설정(prefix)</li>
+<li>빌드 후 저장될 경로 설정(outDir)</li>
+</ul>
+<h3 id="ng-build로-배포하기"><a href="#ng-build로-배포하기" class="headerlink" title="ng build로 배포하기"></a>ng build로 배포하기</h3><ul>
+<li>build 후 생성된 dist폴더 안의 파일들이 서버에 배포된다.</li>
+</ul>
+<h3 id="웹-컴포넌트"><a href="#웹-컴포넌트" class="headerlink" title="웹 컴포넌트"></a>웹 컴포넌트</h3><ul>
+<li>변화감지(change detection)</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/angular2-typescript-framework/" rel="tag"># angular2, typescript, framework</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/06/TIL-1106/" rel="next" title="Typescript 문법">
+                <i class="fa fa-chevron-left"></i> Typescript 문법
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/09/TIL-1109/" rel="prev" title="Angular2 문법과 MVC패턴">
+                Angular2 문법과 MVC패턴 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2017/11/07/TIL-1107/"
+           data-title="Angular2 기본 개념과 구성" data-url="http://mkfdev.github.io/2017/11/07/TIL-1107/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Min Kyung</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/mkfdev" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Angular-기본-개념-및-구성-정리"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Angular-&#xAE30;&#xBCF8;-&#xAC1C;&#xB150;-&#xBC0F;-&#xAD6C;&#xC131;-&#xC815;&#xB9AC;" class="headerlink" title="Angular &#xAE30;&#xBCF8; &#xAC1C;&#xB150; &#xBC0F; &#xAD6C;&#xC131; &#xC815;&#xB9AC;"></a>Angular &#xAE30;&#xBCF8; &#xAC1C;&#xB150; &#xBC0F; &#xAD6C;&#xC131; &#xC815;&#xB9AC;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Angular소개"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#Angular&#xC18C;&#xAC1C;" class="headerlink" title="Angular&#xC18C;&#xAC1C;"></a>Angular&#xC18C;&#xAC1C;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Angular의-장점"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#Angular&#xC758;-&#xC7A5;&#xC810;" class="headerlink" title="Angular&#xC758; &#xC7A5;&#xC810;"></a>Angular&#xC758; &#xC7A5;&#xC810;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Angular-CLI"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#Angular-CLI" class="headerlink" title="Angular CLI"></a>Angular CLI</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#여기서-스캐폴딩-scaffolding-이란…"><span class="nav-number">1.3.1.</span> <span class="nav-text"><a href="#&#xC5EC;&#xAE30;&#xC11C;-&#xC2A4;&#xCE90;&#xD3F4;&#xB529;-scaffolding-&#xC774;&#xB780;&#x2026;" class="headerlink" title="&#xC5EC;&#xAE30;&#xC11C;, &#xC2A4;&#xCE90;&#xD3F4;&#xB529;(scaffolding)&#xC774;&#xB780;&#x2026;"></a>&#xC5EC;&#xAE30;&#xC11C;, &#xC2A4;&#xCE90;&#xD3F4;&#xB529;(scaffolding)&#xC774;&#xB780;&#x2026;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Angular-CLI-사용법"><span class="nav-number">1.4.</span> <span class="nav-text"><a href="#Angular-CLI-&#xC0AC;&#xC6A9;&#xBC95;" class="headerlink" title="Angular CLI &#xC0AC;&#xC6A9;&#xBC95;"></a>Angular CLI &#xC0AC;&#xC6A9;&#xBC95;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#프로젝트-구성요소"><span class="nav-number">1.5.</span> <span class="nav-text"><a href="#&#xD504;&#xB85C;&#xC81D;&#xD2B8;-&#xAD6C;&#xC131;&#xC694;&#xC18C;" class="headerlink" title="&#xD504;&#xB85C;&#xC81D;&#xD2B8; &#xAD6C;&#xC131;&#xC694;&#xC18C;"></a>&#xD504;&#xB85C;&#xC81D;&#xD2B8; &#xAD6C;&#xC131;&#xC694;&#xC18C;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#참고-anular-cli-json-설정파일"><span class="nav-number">1.5.1.</span> <span class="nav-text"><a href="#&#xCC38;&#xACE0;-anular-cli-json-&#xC124;&#xC815;&#xD30C;&#xC77C;" class="headerlink" title="&#xCC38;&#xACE0;) anular-cli.json &#xC124;&#xC815;&#xD30C;&#xC77C;"></a>&#xCC38;&#xACE0;) anular-cli.json &#xC124;&#xC815;&#xD30C;&#xC77C;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ng-build로-배포하기"><span class="nav-number">1.6.</span> <span class="nav-text"><a href="#ng-build&#xB85C;-&#xBC30;&#xD3EC;&#xD558;&#xAE30;" class="headerlink" title="ng build&#xB85C; &#xBC30;&#xD3EC;&#xD558;&#xAE30;"></a>ng build&#xB85C; &#xBC30;&#xD3EC;&#xD558;&#xAE30;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#웹-컴포넌트"><span class="nav-number">1.7.</span> <span class="nav-text"><a href="#&#xC6F9;-&#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;" class="headerlink" title="&#xC6F9; &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;"></a>&#xC6F9; &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Min Kyung</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

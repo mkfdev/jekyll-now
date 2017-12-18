@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ajax, json, Asynchronous, http," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Ajax(Asynchronous JavaScript and XML) 자바스크립트를 이용해서  비동기적(Asynchronous)으로 서버와 브라우저가 데이터를 교환할 수 있는 통신 방식이다. 서버로부터 웹페이지가 반환되면 화면 전체를 갱신해야 하는데 페이지 일부만 갱신하고도 동일한 효과를 볼 수 있도록 하는 것이다. Client에서 HTTP Request 객">
+<meta name="keywords" content="ajax, json, Asynchronous, http">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ajax와 JSON">
+<meta property="og:url" content="http://mkfdev.github.io/2017/10/17/TIL-1017/index.html">
+<meta property="og:site_name" content="FRONT.DEV.MK">
+<meta property="og:description" content="Ajax(Asynchronous JavaScript and XML) 자바스크립트를 이용해서  비동기적(Asynchronous)으로 서버와 브라우저가 데이터를 교환할 수 있는 통신 방식이다. 서버로부터 웹페이지가 반환되면 화면 전체를 갱신해야 하는데 페이지 일부만 갱신하고도 동일한 효과를 볼 수 있도록 하는 것이다. Client에서 HTTP Request 객">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-12-18T03:57:40.071Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ajax와 JSON">
+<meta name="twitter:description" content="Ajax(Asynchronous JavaScript and XML) 자바스크립트를 이용해서  비동기적(Asynchronous)으로 서버와 브라우저가 데이터를 교환할 수 있는 통신 방식이다. 서버로부터 웹페이지가 반환되면 화면 전체를 갱신해야 하는데 페이지 일부만 갱신하고도 동일한 효과를 볼 수 있도록 하는 것이다. Client에서 HTTP Request 객">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mkfdev.github.io/2017/10/17/TIL-1017/"/>
+
+
+
+
+
+  <title>Ajax와 JSON | FRONT.DEV.MK</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FRONT.DEV.MK</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mkfdev.github.io/2017/10/17/TIL-1017/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Min Kyung">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FRONT.DEV.MK">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Ajax와 JSON</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-17T18:54:51+09:00">
+                2017-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/TIL/" itemprop="url" rel="index">
+                    <span itemprop="name">TIL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/17/TIL-1017/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/10/17/TIL-1017/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Ajax-Asynchronous-JavaScript-and-XML"><a href="#Ajax-Asynchronous-JavaScript-and-XML" class="headerlink" title="Ajax(Asynchronous JavaScript and XML)"></a>Ajax(Asynchronous JavaScript and XML)</h1><ul>
+<li>자바스크립트를 이용해서  비동기적(Asynchronous)으로 서버와 브라우저가 데이터를 교환할 수 있는 통신 방식이다.</li>
+<li>서버로부터 웹페이지가 반환되면 화면 전체를 갱신해야 하는데 페이지 일부만 갱신하고도 동일한 효과를 볼 수 있도록 하는 것이다.</li>
+<li>Client에서 HTTP Request 객체를 이용해 데이터를 요청한다. </li>
+<li>Server에서 HTTP Response 객체를 이용해 server의 응답에 요청한다.</li>
+<li>데이터를 반환할 때 데이터 형식은 문자열로 받은 객체를 JSON으로 변경하거나, JSON을 객체화 시키는 두가지가 있다.</li>
+</ul>
+<h1 id="JSON-JavaScript-Object-Notation"><a href="#JSON-JavaScript-Object-Notation" class="headerlink" title="JSON (JavaScript Object Notation)"></a>JSON (JavaScript Object Notation)</h1><ul>
+<li>HTML, Text, JSON 등을 반환하는데 Ajax을 위한 데이터 형식이다.</li>
+<li>쌍 따옴표를 사용한다.(프로퍼티 이름도)</li>
+<li>객체리터럴과 흡사하나, 순순한 텍스트로 구성되었다.</li>
+<li>코멘트, 주석을 쓰면 에러가 발생한다.</li>
+</ul>
+<h1 id="데이터-형식"><a href="#데이터-형식" class="headerlink" title="데이터 형식"></a>데이터 형식</h1><h2 id="객체-gt-JSON-형식의-문자열"><a href="#객체-gt-JSON-형식의-문자열" class="headerlink" title="객체 -&gt; JSON 형식의 문자열"></a>객체 -&gt; JSON 형식의 문자열</h2><ul>
+<li>JSON.stringify(객체)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name : <span class="string">'Choi'</span>,</span><br><span class="line">    gender : <span class="string">'female'</span>,</span><br><span class="line">    age : <span class="number">20</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> strObj = <span class="built_in">JSON</span>.stringify(obj);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> strObj, strObj);</span><br><span class="line"><span class="comment">// string &#123;"name":"Choi","gender":"female","age":"20"&#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>개발자가 데이터 확인할 때,(편의성, 가독성)</li>
+<li>JSON.stringify(obj, 필터함수, 공백갯수) 의 인자값을 준다.</li>
+<li>필터 함수는 직접 함수를 정의한다. (원하는 데이터만 출력하기 위해 작성)</li>
+<li>공백갯수는 프로퍼티 앞의 공백의 갯수를 말한다. 개발자의 가독성을 위해 준다. </li>
+</ul>
+<h2 id="JSON-형식의-문자열-gt-객체"><a href="#JSON-형식의-문자열-gt-객체" class="headerlink" title="JSON 형식의 문자열 -&gt; 객체"></a>JSON 형식의 문자열 -&gt; 객체</h2><ul>
+<li>JSON.parse(문자열)</li>
+<li>역직렬화<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = <span class="built_in">JSON</span>.parse(stObj);</span><br><span class="line"><span class="comment">//strObj =  &#123;"name":"Choi","gender":"female","age":"20"&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> o, o);</span><br><span class="line"><span class="comment">//o &#123;name:'Choi',gender:'female',age:'20'&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="XMLHttpRequest"><a href="#XMLHttpRequest" class="headerlink" title="XMLHttpRequest"></a>XMLHttpRequest</h1><ul>
+<li>브라우저는 XMLHttpRequest 객체를 이용하여 Ajax 요청을 생성하고 전송한다.</li>
+</ul>
+<h2 id="Ajax-request"><a href="#Ajax-request" class="headerlink" title="Ajax request"></a>Ajax request</h2><ul>
+<li>Ajax 요청 처리</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//XMLHttpRequest 객체 생성</span></span><br><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line"><span class="comment">//비동기 방식으로 Request를 오픈한다.</span></span><br><span class="line">xhr.open(<span class="string">'GET'</span>, <span class="string">'/users'</span>);</span><br><span class="line"><span class="comment">//Request를 전송한다.</span></span><br><span class="line">xhr.send();</span><br></pre></td></tr></table></figure>
+<ol>
+<li>XMLHttpRequest.open</li>
+</ol>
+<ul>
+<li>XMLHttpRequest 객체의 인스턴스를 생성하고 open메소드를 사용하여 서버로의 요청을 준비한다.</li>
+<li>XMLHttpRequest.open(method, url, async)</li>
+<li>method : HTTP method(GET, POST, PUT, DELETE 등)</li>
+<li>url : 요청을 보낼 URL, 한서버에서만 요청을 주고 받기 때문에(파일을 전달받은 서버와 같은 서버) 주로 같은 경로를 사용한다.</li>
+<li>async : 비동기 조작 여부, default는 true(비동기)</li>
+</ul>
+<ol>
+<li>XMLHttpRequest.send</li>
+</ol>
+<ul>
+<li>준비된 요청을 서버에 전달한다.</li>
+<li>GET, POST 메소드에 따라 전송방식에 차이가 있다.</li>
+<li>GET 메소드는 URL의 일부분인 쿼리문자열(쿼리 파라미터)로 데이터를 서버로 전송한다.</li>
+<li>POST 메소드는 데이터(payload)를 Request body에 담아 전송한다.(payload:body에 담기는 data)</li>
+<li>XMLHttpRequest.send 메소드는 request body에 담아 전송할 인수를 전달 할 수 있다.</li>
+<li>HTTP Request/Response Message Pair 에는 Header와 Body가 있는데, Header에는 전달하려는 요청 정보를 담는다.</li>
+<li>**요청 메소드가 GET인 경우 send메소드의 인수는 무시되고 request body는 null로 설정된다.</li>
+</ul>
+<ol>
+<li>XMLHttpRequest.setRequestHeader</li>
+</ol>
+<ul>
+<li>HTTP Request Header 값을 설정한다.</li>
+<li>Request Header의 Content-type은 request body에 담아 서버로 전송할 데이터의 MIME-type을 지정한다.</li>
+<li>Request header의 Accept는 클라이언트가 서버에 요청할 때 서버가 센드백할 데이터의 MIME-type을 지정한다.</li>
+<li>Accept 헤더를 설정하지 않으면 <em>/</em>으로 전송된다.</li>
+<li>setReuqestHeader 메소드는 반드시 open메소드 뒤에 호출한다.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">req.open(<span class="string">'POST'</span>,<span class="string">'/users'</span>);</span><br><span class="line"><span class="comment">//application/x-www-form-urlencoded는 key=value&amp;key=value...형태로 전송</span></span><br><span class="line">req.setRequestHeader(<span class="string">'Content-Type'</span>, <span class="string">'application/x-www-form-urlencoded'</span>);</span><br><span class="line"><span class="comment">//서버가 센드백할 데이터의 MIME-type : json</span></span><br><span class="line">req.setRequestHeader(<span class="string">'Accept'</span>,<span class="string">'application/json'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="Ajax-response"><a href="#Ajax-response" class="headerlink" title="Ajax response"></a>Ajax response</h2><ul>
+<li>Ajax 응답 처리</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// request(요청방식)와 동일</span></span><br><span class="line"><span class="comment">// 비동기방식으로 (XMLHttp)Request를 오픈한 후, 전송</span></span><br><span class="line"><span class="keyword">var</span> req = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">req.opne(<span class="string">'GET'</span>, <span class="string">'data/test.json'</span>);</span><br><span class="line">req.send();</span><br><span class="line"></span><br><span class="line"><span class="comment">//readyState 프로퍼티가 변경될 때마다 콜백함수를 호출한다.</span></span><br><span class="line">req.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line"><span class="comment">//readyState: XMLHttpRequest 상태(state)를 반환</span></span><br><span class="line"><span class="comment">// 4(DONE) : 서버 응답 완료</span></span><br><span class="line">    <span class="keyword">if</span>(req.readyState === XMLHttpRequest.Done)&#123;</span><br><span class="line">        <span class="comment">// response 상태 코드를 반환, 200(정상 응답)</span></span><br><span class="line">        <span class="keyword">if</span>(req.status === <span class="number">200</span>)&#123;</span><br><span class="line">            <span class="comment">//텍스트(데이터) 출력</span></span><br><span class="line">            <span class="built_in">console</span>.log(req.responseText);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"Error!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="localhost"><a href="#localhost" class="headerlink" title="localhost"></a>localhost</h1><ul>
+<li>내 PC에 깔려있는 웹서버(가상 서버)</li>
+<li>localhost:port</li>
+<li>웹서버마다 port를 설정해준다.</li>
+<li>가상 서버(localhost)에서 실제 서버로 보내는 것을 배포라고 한다.</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ajax-json-Asynchronous-http/" rel="tag"># ajax, json, Asynchronous, http</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/16/TIL-1016/" rel="next" title="DOM Tree와 HTML 문서 구조">
+                <i class="fa fa-chevron-left"></i> DOM Tree와 HTML 문서 구조
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/17/TIL-1017-2/" rel="prev" title="REST API">
+                REST API <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2017/10/17/TIL-1017/"
+           data-title="Ajax와 JSON" data-url="http://mkfdev.github.io/2017/10/17/TIL-1017/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Min Kyung</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/mkfdev" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Ajax-Asynchronous-JavaScript-and-XML"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Ajax-Asynchronous-JavaScript-and-XML" class="headerlink" title="Ajax(Asynchronous JavaScript and XML)"></a>Ajax(Asynchronous JavaScript and XML)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSON-JavaScript-Object-Notation"><span class="nav-number">2.</span> <span class="nav-text"><a href="#JSON-JavaScript-Object-Notation" class="headerlink" title="JSON (JavaScript Object Notation)"></a>JSON (JavaScript Object Notation)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#데이터-형식"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#xB370;&#xC774;&#xD130;-&#xD615;&#xC2DD;" class="headerlink" title="&#xB370;&#xC774;&#xD130; &#xD615;&#xC2DD;"></a>&#xB370;&#xC774;&#xD130; &#xD615;&#xC2DD;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#객체-gt-JSON-형식의-문자열"><span class="nav-number">3.1.</span> <span class="nav-text"><a href="#&#xAC1D;&#xCCB4;-gt-JSON-&#xD615;&#xC2DD;&#xC758;-&#xBB38;&#xC790;&#xC5F4;" class="headerlink" title="&#xAC1D;&#xCCB4; -&gt; JSON &#xD615;&#xC2DD;&#xC758; &#xBB38;&#xC790;&#xC5F4;"></a>&#xAC1D;&#xCCB4; -&gt; JSON &#xD615;&#xC2DD;&#xC758; &#xBB38;&#xC790;&#xC5F4;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON-형식의-문자열-gt-객체"><span class="nav-number">3.2.</span> <span class="nav-text"><a href="#JSON-&#xD615;&#xC2DD;&#xC758;-&#xBB38;&#xC790;&#xC5F4;-gt-&#xAC1D;&#xCCB4;" class="headerlink" title="JSON &#xD615;&#xC2DD;&#xC758; &#xBB38;&#xC790;&#xC5F4; -&gt; &#xAC1D;&#xCCB4;"></a>JSON &#xD615;&#xC2DD;&#xC758; &#xBB38;&#xC790;&#xC5F4; -&gt; &#xAC1D;&#xCCB4;</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XMLHttpRequest"><span class="nav-number">4.</span> <span class="nav-text"><a href="#XMLHttpRequest" class="headerlink" title="XMLHttpRequest"></a>XMLHttpRequest</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax-request"><span class="nav-number">4.1.</span> <span class="nav-text"><a href="#Ajax-request" class="headerlink" title="Ajax request"></a>Ajax request</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax-response"><span class="nav-number">4.2.</span> <span class="nav-text"><a href="#Ajax-response" class="headerlink" title="Ajax response"></a>Ajax response</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#localhost"><span class="nav-number">5.</span> <span class="nav-text"><a href="#localhost" class="headerlink" title="localhost"></a>localhost</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Min Kyung</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
